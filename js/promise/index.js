@@ -1,21 +1,28 @@
+const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
+
 function MPromise(executor){
-  var self = this;
-  self.status = 'pending';
-  self.result = undefined;
   if(typeof executor !== 'function'){
     throw new Error('Promise executor not a function')
   }
 
+  var self = this;
+  self.status = PENDING;
+  self.result = undefined;
+  self.fulfilledQueues = [];
+  self.rejectedQueues = [];
+
   function resolve(value){
-    if(self.status === 'pending'){
-      self.status = 'resolved'
+    if(self.status === PENDING){
+      self.status = FULFILLED;
       self.result = value;
     }
   }
 
   function reject(reason){
-    if(self.status === 'pending'){
-      self.status = 'rejected'
+    if(self.status === PENDING){
+      self.status = REJECTED;
       self.result = reason;
     }
   }
@@ -30,45 +37,61 @@ function MPromise(executor){
 MPromise.prototype.then = function(onResolved, onRejected){
   var self = this;
 
-  onResolved = typeof onResolved === 'function' ? onResolved : function(v){};
-  onRejected = typeof onResolved === 'function' ? onRejected : function(r){};
+  onResolved = typeof onResolved === 'function' ? onResolved : function(v){ return v};
+  onRejected = typeof onResolved === 'function' ? onRejected : function(r){ return r};
 
-  if(self.status === 'resolved'){   
+  if(self.status === FULFILLED){   
     return new MPromise((resolve, reject) => {
       try{        
         var x = onResolved(self.result);
-        resolve(x)
+        if(x instanceof MPromise){
+          x.then(resolve, reject);
+        }else{
+          resolve(x)
+        }
       }catch(error){
         reject(error)
       }
     })
   }
 
-  if(self.status === 'rejected'){
-    onRejected(self.result)
+  if(self.status === REJECTED){
+    return new MPromise((resolve, reject)=>{
+      try{
+        var x = onRejected(self.result);  
+        resolve(x)      
+      }catch(error){
+        reject(error)
+      }
+    })
   }
 
-  if(self.status === 'pending'){
-
+  if(self.status === PENDING){
+    return new MPromise((resolve, reject)=>{
+      self.fulfilledQueues.push(onResolved)
+      self.rejectedQueues.push(onRejected)
+    })
   }
 }
 
 var p = new MPromise((resolve, reject)=>{
-  reject('ssss')
+  // reject('ssss')
   // resolve('bbbb')
 })
 
 
+
 var p2 = p.then(
   value => {
-    console.log(value)
-    throw 'p2';
+    return p3
   }, 
   error => {
     console.log(error)
-    throw 'p2 error';
+    return 'p2 error';
   }
 )
+
+var p3 = p2.then(value => {}, error => {})
 
 
 var promise = new Promise((resolve, reject)=>{
@@ -76,10 +99,17 @@ var promise = new Promise((resolve, reject)=>{
   resolve('bbbb')
 })
 
-var promise2 = promise.then(
-  "a", 
-  "b"
-)
+var promise3 =  new Promise((resolve, reject)=>{
+  setTimeout(() => {
+    resolve('prmose is promise')
+  }, 5000)
+})
+
+var promise2 = promise.then(()=>{
+  return promise3;
+}, () => {
+  // return 'sssssss'
+})
 
 
 console.log(p)
