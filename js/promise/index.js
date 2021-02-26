@@ -17,6 +17,9 @@ function MPromise(executor){
     if(self.status === PENDING){
       self.status = FULFILLED;
       self.result = value;
+      for(var i = 0; i < self.fulfilledQueues.length; i++){
+        self.fulfilledQueues[i](value)
+      }
     }
   }
 
@@ -24,6 +27,9 @@ function MPromise(executor){
     if(self.status === PENDING){
       self.status = REJECTED;
       self.result = reason;
+      for(var i = 0; i < self.rejectedQueues.length; i++){
+        self.rejectedQueues[i](reason)
+      }
     }
   }
 
@@ -34,21 +40,52 @@ function MPromise(executor){
   }
 }
 
+function resolvePromise(promise, x, resolve, reject) {
+  var then
+  var thenCalledOrThrow = false
+
+  if (promise === x) {
+    return reject(new TypeError('Chaining cycle detected for promise!'))
+  }
+
+  if ((x !== null) && ((typeof x === 'object') || (typeof x === 'function'))) {
+    try {
+      then = x.then
+      if (typeof then === 'function') {
+        then.call(x, function rs(y) {
+          if (thenCalledOrThrow) return
+          thenCalledOrThrow = true
+          return resolvePromise(promise, y, resolve, reject)
+        }, function rj(r) {
+          if (thenCalledOrThrow) return
+          thenCalledOrThrow = true
+          return reject(r)
+        })
+      } else {
+        return resolve(x)
+      }
+    } catch(e) {
+      if (thenCalledOrThrow) return
+      thenCalledOrThrow = true
+      return reject(e)
+    }
+  } else {
+    return resolve(x)
+  }
+}
+
 MPromise.prototype.then = function(onResolved, onRejected){
   var self = this;
+  var promise2;
 
   onResolved = typeof onResolved === 'function' ? onResolved : function(v){ return v};
-  onRejected = typeof onResolved === 'function' ? onRejected : function(r){ return r};
+  onRejected = typeof onRejected === 'function' ? onRejected : function(r){ return r};
 
   if(self.status === FULFILLED){   
-    return new MPromise((resolve, reject) => {
+    return promise2 = new MPromise((resolve, reject) => {
       try{        
         var x = onResolved(self.result);
-        if(x instanceof MPromise){
-          x.then(resolve, reject);
-        }else{
-          resolve(x)
-        }
+        resolvePromise(promise2, x, resolve, reject)
       }catch(error){
         reject(error)
       }
@@ -56,10 +93,10 @@ MPromise.prototype.then = function(onResolved, onRejected){
   }
 
   if(self.status === REJECTED){
-    return new MPromise((resolve, reject)=>{
+    return promise2 = new MPromise((resolve, reject)=>{
       try{
         var x = onRejected(self.result);  
-        resolve(x)      
+        resolvePromise(promise2, x, resolve, reject)    
       }catch(error){
         reject(error)
       }
@@ -67,23 +104,46 @@ MPromise.prototype.then = function(onResolved, onRejected){
   }
 
   if(self.status === PENDING){
-    return new MPromise((resolve, reject)=>{
-      self.fulfilledQueues.push(onResolved)
-      self.rejectedQueues.push(onRejected)
+    return promise2 = new MPromise((resolve, reject)=>{
+      self.fulfilledQueues.push(function(value){
+        try{
+          var x = onResolved(self.result);
+          resolvePromise(promise2, x, resolve, reject)
+        }catch(error){
+          reject(error)
+        }
+      })
+      self.rejectedQueues.push(function(reason){
+        try{
+          var x = onRejected(self.result);  
+          resolvePromise(promise2, x, resolve, reject)  
+        }catch(error){
+          reject(error)
+        }
+      })
     })
   }
 }
 
+MPromise.prototype.catch = function(onRejected){
+  return this.then(null, onRejected)
+}
+
 var p = new MPromise((resolve, reject)=>{
   // reject('ssss')
-  // resolve('bbbb')
+  resolve('bbbb')
 })
 
+var p1 = new MPromise((resolve, reject) => {
+  setTimeout(() => {
+    reject('p1 error')
+  }, 3000)
+})
 
 
 var p2 = p.then(
   value => {
-    return p3
+    return p1
   }, 
   error => {
     console.log(error)
@@ -91,7 +151,9 @@ var p2 = p.then(
   }
 )
 
-var p3 = p2.then(value => {}, error => {})
+var p3 = p2.then().then().catch((error)=>{
+  console.log(error)
+})
 
 
 var promise = new Promise((resolve, reject)=>{
@@ -99,17 +161,20 @@ var promise = new Promise((resolve, reject)=>{
   resolve('bbbb')
 })
 
-var promise3 =  new Promise((resolve, reject)=>{
-  setTimeout(() => {
-    resolve('prmose is promise')
-  }, 5000)
+var promise1 = new Promise((resolve, reject) => {
+  setTimeout(()=> {
+    reject('promise1 error')
+  }, 3000)
 })
 
-var promise2 = promise.then(()=>{
-  return promise3;
-}, () => {
-  // return 'sssssss'
-})
+var promise2 = promise1.then().then().catch(error => console.log(error))
+
+
+// var promise2 = promise.then(()=>{
+//   return promise1;
+// }, () => {
+//   // return 'sssssss'
+// })
 
 
 console.log(p)
