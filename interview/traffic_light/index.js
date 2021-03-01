@@ -6,22 +6,31 @@
 
 function sleep(duration, twinkleDuration){
   return new Promise((resolve, reject) => {
-    while(duration > 0){
-      console.log(duration)
-      duration--;
-    }
-    console.log('ssssss')
+    (function walk(){
+      setTimeout(function(){
+        duration--;
+        console.log(duration)
+        if(twinkleDuration && duration < twinkleDuration){
+          console.log('闪灯')
+        }
+        if(duration > 0){
+          walk()
+        }else{
+          resolve()
+        }
+      }, 1000)
+    })()
   })
 }
 
 async function run(){
   while(true){
     console.log('绿灯')
-    await sleep(7 * 1000);
+    await sleep(20, 5);
     console.log('黄灯')
-    await sleep(3 * 1000);
+    await sleep(3);
     console.log('红灯')
-    await sleep(10 * 1000);
+    await sleep(10, 5);
   }
 }
 
