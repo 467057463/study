@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld name="mm" age="18" msg="Welcome to Your Vue.js App"/>
   <b class="test" :class="{active: isActive}">sss</b>
   <p class="test" :class="[{active: isActive}, 'has-error']">bbbb</p>
 </template>
