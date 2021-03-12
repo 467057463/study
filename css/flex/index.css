@@ -1,0 +1,43 @@
+.box{
+  background: red;
+  height: 500px;
+  width: 490px;
+
+  display: flex;
+  /* flex-direction: row; */
+  /* flex-wrap: wrap-reverse; */
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.item{
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  /* margin-right: 10px; */
+}
+.item:nth-child(1){
+  order: 1;
+  flex-basis: 120px;
+  padding: 10px;
+  box-sizing: border-box;
+  /* background-image: url("./2020.jpg"); */
+  background-repeat: no-repeat;
+  align-self: flex-end;
+  /* background-clip: content-box; */
+}
+.item:nth-child(2){
+  /* flex-grow: 1; */
+}
+.item:nth-child(3){
+  /* flex-grow: 2; */
+}
+.item:nth-child(4){
+  /* flex-shrink: 2; */
+}
+.item:nth-child(5){
+}
+.item:nth-child(6){
+}
