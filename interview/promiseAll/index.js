@@ -71,3 +71,27 @@ function promiseAllSettled(promises){
 promiseAllSettled([p1, p2, p3])
 .then(res => console.log(res))
 .catch(err => console.log(err))
+
+
+function promiseAny(promises){
+  let rejectCount = 0;
+  let rejectValues = [];
+
+  return new Promise((resolve, reject) => {
+    promises.forEach(item => {
+      Promise.resolve(item).then(value => {
+        resolve(value)
+      }, error => {
+        rejectCount++;
+        rejectValues.push(error);
+        if(rejectCount === promises.length){
+          reject(rejectValues)
+        }
+      })
+    })
+  })
+}
+
+promiseAny([p3, p3, p3])
+.then(res => console.log(res))
+.catch(error => console.log(error))
