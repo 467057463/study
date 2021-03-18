@@ -44,30 +44,16 @@ var obj2 = {
   }
 }
 
-p2 = new Proxy(obj2, {
-  get(target, proKey, receiver){
-    console.log(`get ${proKey}`);
-    return Reflect.get(target, proKey, receiver)
+
+var p2 = new Proxy(obj2, {
+  get(target, key, receiver){
+    console.log(`${key} is get`)
+    return Reflect.get(target, key, receiver)
   },
-  set(target, proKey, value, receiver){
-    console.log(target, proKey, value, receiver)
-    return Reflect.set(target, proKey, value, receiver)
+
+  set(target, key, value, receiver){
+    console.log(`${key} is set`)
+    return Reflect.get(target, key, value, receiver)
   }
 })
-
-function createArray(...elements) {
-  let handler = {
-    get(target, propKey, receiver) {
-      let index = Number(propKey);
-      if (index < 0) {
-        propKey = String(target.length + index);
-      }
-      return Reflect.get(target, propKey, receiver);
-    }
-  };
-
-  let target = [];
-  target.push(...elements);
-  return new Proxy(target, handler);
-}
 
