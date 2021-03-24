@@ -1,10 +1,15 @@
 const VERSION = '1.0.0';
-function say(){
-  console.log(VERSION)
+let say = {
+  a: 1
 }
 
 // export VERSION;
 export {
-  // VERSION as v,
+  f as default,
+  say,
   VERSION
+}
+
+function f(){
+  console.log('ffff')
 }

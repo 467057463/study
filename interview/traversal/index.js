@@ -1,16 +1,7 @@
-import * as util from './utils.js';
+// import { say, VERSION } from './my_module.js'
 
-function traversal(node){
-  if(node.nodeType === 1){
-    console.log(node.nodeName)
-  }
-  if(node.children){
-    for(let item of node.children){
-      traversal(item)
-    }
-  }
-}
+// console.log(say, VERSION);
 
-traversal(document.children[0])
-
-console.log(util)
+import('./utils.js').then(res =>{
+  console.log(res)
+})
