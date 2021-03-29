@@ -1,0 +1,33 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.box{
+
+}
+
+.item{
+  width: 70px;
+  background: red;
+  white-space: nowrap;
+}
+
+.item:nth-child(1){
+  word-break: break-all;
+}
+
+.item:nth-child(2){
+  background: yellow;
+  word-wrap: break-word;
+}
+
+.item:nth-child(3){
+  word-break: keep-all;
+}
+
+.item:nth-child(4){
+  /* word-break: keep-all; */
+  /* overflow-wrap:break-word */
+  word-wrap: break-word;
+}
