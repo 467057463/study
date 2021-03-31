@@ -1,0 +1,38 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.item{
+  width: 100px;
+  height: 150px;
+  /* background: red; */
+  margin: 50px;
+  display: inline-block;
+
+  animation-name: back;
+  animation-iteration-count: 50;
+  animation-duration: 2s;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-delay: 5s;
+}
+
+.item:hover{
+  /* animation: back infinite 5s; */
+  /* animation-name: back;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-direction: alternate-reverse;
+  animation-fill-mode: both; */
+}
+
+@keyframes back{
+  0%{
+    background: red;
+  }
+  100%{
+    background: green;
+  }
+}
+
