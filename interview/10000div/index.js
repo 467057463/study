@@ -28,3 +28,6 @@ for(let i = 0; i < num; i++){
 }
 document.body.innerHTML = _html;
 console.timeEnd('other')
+
+
+console.log('ssssss')
