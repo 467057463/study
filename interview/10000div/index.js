@@ -29,5 +29,9 @@ for(let i = 0; i < num; i++){
 document.body.innerHTML = _html;
 console.timeEnd('other')
 
+<<<<<<< HEAD
 
 console.log('ssssss')
+=======
+console.log('some other')
+>>>>>>> a1ee738 (feature - 2)
