@@ -4,8 +4,19 @@
   "description": "nodejs study",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon -w src --exec \"node --inspect src\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "m2",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.2.2",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.0.0",
+    "koa2-cors": "^2.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
