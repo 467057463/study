@@ -1,23 +1,27 @@
 #!/usr/bin/env node
-require('shelljs/global');
+const { cac } = require('cac');
 
-if (!which('git')) {
-  echo('Sorry, this script requires git');
-  exit(1);
-}
+const cli = cac('mmcli');
 
-mkdir('-p', 'out/Release');
-cp('-R', 'stuff/*', 'out/Release');
+// cli.option('-t, --type <type>', 'choose a type to create', {
+//   default: 'vue'
+// })
+// .option('--name <name>', 'you project name')
 
-cd('lib');
-ls('*.js').forEach(function(file) {
-  sed('-i', 'BUILD_VERSION', 'v0.1.2', file);
-  sed('-i', /.*REMOVE_THIS_LINE.*\n/, '', file);
-  sed('-i', /.*REPLACE_LINE_WITH_MACRO.*\n/, cat('macro.js'), file);
-});
-cd('..');
+cli.command('create <name>', 'create a project')
+.option('-t, --type <type>', 'proejct type: vue react', {
+  default: 'vue'
+})
+.option('-d, --dir <dir>', 'dir for project', {
+  default: '.'
+})
+.option('-c, --coverage [coverage]', 'coverage the old dir')
+.option('--env <env>', 'set Envs')
+.example('mmcli create my_blog -t vue -d .')
+.action((name, options) => {
+  console.log(name, options)
+})
 
-if (exec('git commit -am "Auto-commit"').code !== 0) {
-  echo('Error: Git commit failed');
-  exit(1);
-}
+cli.help()
+cli.version(require('../package.json').version)
+cli.parse();
