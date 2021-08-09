@@ -8,7 +8,11 @@ function createWindow () {
     height: 1000
   })
 
-  win.loadURL(process.env.DEV_SERVER_URL)
+  if(process.env.DEV_SERVER_URL){
+    win.loadURL(process.env.DEV_SERVER_URL)
+  } else {
+
+  }
 }
 
 app.whenReady().then(() => {
