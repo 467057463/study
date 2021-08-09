@@ -1,6 +1,7 @@
 import start from './dev';
-let config;
+import build from './build'
 
+let config;
 export default function viteElectron () {
   return {
     name: 'vite-plugin-electron', 
@@ -19,6 +20,7 @@ export default function viteElectron () {
 
     closeBundle(){
       console.log('closeBundle', config)
+      build(config)
     }
   };
 }
