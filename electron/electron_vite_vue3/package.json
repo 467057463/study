@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "electron": "^13.1.8",
+    "esbuild": "^0.12.19",
     "execa": "^5.1.1",
     "rollup": "^2.56.1",
     "vue": "^3.0.5"
