@@ -12,11 +12,14 @@
   "author": "m2",
   "license": "ISC",
   "dependencies": {
+    "esbuild": "^0.12.17",
     "formidable": "^1.2.2",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-router": "^10.0.0",
-    "koa2-cors": "^2.0.6"
+    "koa2-cors": "^2.0.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.12",
