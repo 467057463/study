@@ -2,24 +2,28 @@ import start from './dev';
 import build from './build'
 
 let config;
-export default function viteElectron () {
+export default function viteElectron (pluginConfig) {
   return {
     name: 'vite-plugin-electron', 
-    configureServer(server){
-      console.log(server.config);
-      server.httpServer.on('listening', (err, app) => {
-        const address = server.httpServer.address();
-        start(server.config, address)
+    // 开发模式
+    configureServer({httpServer}){
+      httpServer.on('listening', (err, app) => {
+        const address = httpServer.address();
+        config.env.DEV_SERVER_URL = `http://${address.address}:${address.port}`;
+        start(config)
       })
     },
     
+    // 存储 config 变量
     configResolved(resolvedConfig) {
-      // 存储最终解析的配置
-      config = resolvedConfig
+      config = {
+        ...resolvedConfig,
+        pluginConfig
+      }
     },
-
-    closeBundle(){
-      console.log('closeBundle', config)
+    
+    // 生成模式
+    closeBundle(){      
       build(config)
     }
   };

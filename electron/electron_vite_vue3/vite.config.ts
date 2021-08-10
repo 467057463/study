@@ -6,6 +6,10 @@ import viteElectron from './vite-plugin-electron';
 export default defineConfig({
   plugins: [
     vue(), 
-    viteElectron()
+    viteElectron({
+      preload: {
+        dir: 'preload'
+      }
+    })
   ]
 })

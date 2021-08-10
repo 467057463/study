@@ -1,101 +1,57 @@
-const rollup = require('rollup');
-const electron = require('electron')
-const path = require('path')
-const { spawn } = require('child_process')
-const chalk = require('chalk')
-const { build } = require('esbuild');
+const electron = require('electron');
+const path = require('path');
+const { spawn } = require('child_process');
+
+
+import { mainProcessBuild, log } from './util';
 
 let electronProcess = null;
 let manualRestart = false;
+const startTime = Date.now();
 
-async function startMain(config, address){  
-  const res = await build({
-    entryPoints: [path.join(config.root, './main.js')],
-    outdir: 'dist',
-    platform: 'node',
-    bundle: true,
-    format: 'cjs',
-    sourcemap: 'inline',
-    metafile: true,
-    plugins: [
-      {
-        name: 'externalize-deps',
-        setup(build) {
-          build.onResolve({ filter: /.*/ }, (args) => {
-            const id = args.path
-            if (id[0] !== '.' && !path.isAbsolute(id)) {
-              return {
-                external: true
-              }
-            }
-          })
-        }
-      },
-    ],
-    watch: {
-      onRebuild(error, result){
-        if (error){
-          throw('watch build failed:', error)
-        }
-        if(electronProcess && electronProcess.kill){
-          manualRestart = true
-          process.kill(electronProcess.pid)
-          electronProcess = null
-
-          startElectron(config, address)
-          setTimeout(() => {
-            manualRestart = false
-          }, 5000)
-        }
-      }
+// 编译主进程文件
+async function buildMain(config){
+  function onRebuild(error, result){
+    if (error){
+      throw('watch build failed:', error)
     }
-  })    
+    if(electronProcess && electronProcess.kill){      
+      log('info',  `electron 主进程启动重启中...`)
+      manualRestart = true
+      process.kill(electronProcess.pid)
+      electronProcess = null
+
+      startElectron(config)
+      setTimeout(() => {
+        manualRestart = false
+      }, 5000)
+    }
+  }  
+  await mainProcessBuild(config, 'dev', onRebuild)
 }
 
-function startElectron(config, address){
-  console.log('config', address)
-  var args = [
+// 启动/重新启动 electron
+function startElectron(config){
+  const args = [
     '--inspect=5858',
     path.join(config.root, 'dist', './main.js')
   ]
-  electronProcess = spawn(electron, args, {
-    env: {
-      DEV_SERVER_URL: 'http://' + address.address + ':' + address.port,
-      ...config.env
-    }
-  })
 
+  electronProcess = spawn(electron, args)
   electronProcess.stdout.on('data', data => {
-    electronLog(data, 'blue')
+    log('info', data)
   })
   electronProcess.stderr.on('data', data => {
-    electronLog(data, 'red')
+    log('info', data)
   })
-
   electronProcess.on('close', () => {
     if (!manualRestart) process.exit()
   })
 }
 
-export default function(config, address){
-  startMain(config, address).then(res => {
-    startElectron(config, address)
-  })
+export default async function(config){
+  await buildMain(config);
+  await startElectron(config);
+  log('info',  `electron 主进程启动完毕, 用时${(Date.now() - startTime) / 1000}s`)
 }
 
-function electronLog (data, color) {
-  let log = ''
-  data = data.toString().split(/\r?\n/)
-  data.forEach(line => {
-    log += `  ${line}\n`
-  })
-  if (/[0-9A-z]+/.test(log)) {
-    console.log(
-      chalk[color].bold('┏ Electron -------------------') +
-      '\n\n' +
-      log +
-      chalk[color].bold('┗ ----------------------------') +
-      '\n'
-    )
-  }
-}

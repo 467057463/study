@@ -3,7 +3,9 @@ const path = require('path')
 const { build: electronBuilder } = require('electron-builder');
 const { stat, remove, writeFile } = require('fs-extra')
 
-async function generatePackageJson(config) {
+import { mainProcessBuild, log } from './util';
+
+async function generatePackageJson(config, dependencies) {
   const original = require(path.join(config.root, './package.json'))
   const result = {
     name: original.name,
@@ -12,51 +14,33 @@ async function generatePackageJson(config) {
     license: original.license,
     description: original.description,
     main: './main.js',
-    dependencies: Object.entries(original.dependencies).reduce((object, entry) => ({ ...object, [entry[0]]: entry[1] }), {})
+    dependencies: 
+      Object.entries(original.dependencies)
+      .filter(item => dependencies.includes(item[0]))
+      .reduce((object, entry) => ({ ...object, [entry[0]]: entry[1] }), {})
   }
   await writeFile('dist/package.json', JSON.stringify(result))
 }
 
-async function buildMain(config){
-  await build({
-    entryPoints: [path.join(config.root, './main.js')],
-    outdir: 'dist',
-    platform: 'node',
-    bundle: true,
-    format: 'cjs',
-    sourcemap: 'inline',
-    metafile: true,
-    plugins: [
-      {
-        name: 'externalize-deps',
-        setup(build) {
-          build.onResolve({ filter: /.*/ }, (args) => {
-            const id = args.path
-            if (id[0] !== '.' && !path.isAbsolute(id)) {
-              return {
-                external: true
-              }
-            }
-          })
-        }
-      },
-    ],    
-  }) 
-}
+
 
 export default async function(config){
-  await buildMain(config)
-  await generatePackageJson(config)
-  electronBuilder({
+  const startTime = Date.now();
+  log('info', `正在打包electron...`)
+  const { dependencies } = await mainProcessBuild(config, 'build')
+  console.log(dependencies)
+  await generatePackageJson(config, dependencies)
+  await electronBuilder({
     publish: 'never',
     config: {
       productName: '',
       appId: '',
       directories: {
-        output: 'build',
+        output: 'dist_application',
         buildResources: 'build',
         app: 'dist'
       },
     }
   })
+  log('info', `electron 打包完毕, 用时${(Date.now() - startTime) / 1000}s`)
 }
