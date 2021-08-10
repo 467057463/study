@@ -28,7 +28,7 @@ export default async function(config){
   const startTime = Date.now();
   log('info', `正在打包electron...`)
   const { dependencies } = await mainProcessBuild(config, 'build')
-  console.log(dependencies)
+  // console.log(dependencies)
   await generatePackageJson(config, dependencies)
   await electronBuilder({
     publish: 'never',

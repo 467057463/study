@@ -3,7 +3,7 @@ const path = require('path');
 const { spawn } = require('child_process');
 const { stat, remove, writeFile } = require('fs-extra')
 
-import { mainProcessBuild, log } from './util';
+import { mainProcessBuild, log, preloadBuild } from './util';
 
 let electronProcess = null;
 let manualRestart = false;
@@ -50,7 +50,8 @@ function startElectron(config){
 }
 
 export default async function(config){
-  remove(path.join(config.root, config.build.outDir))
+  // remove(path.join(config.root, config.build.outDir))
+  await preloadBuild(config);
   await buildMain(config);
   await startElectron(config);
   log('info',  `electron 主进程启动完毕, 用时${(Date.now() - startTime) / 1000}s`)

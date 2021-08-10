@@ -1,5 +1,6 @@
 import start from './dev';
 import build from './build'
+import path from 'path'
 
 let config;
 export default function viteElectron (pluginConfig) {
@@ -23,7 +24,7 @@ export default function viteElectron (pluginConfig) {
     },
     
     // 生成模式
-    closeBundle(){      
+    closeBundle(){ 
       build(config)
     }
   };

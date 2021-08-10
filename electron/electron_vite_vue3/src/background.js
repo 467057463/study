@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import createProtocol from '../vite-plugin-electron/createProtocol';
 const fs = require('fs')
 const path = require('path')
-const fileLocation = path.join(__dirname, 'test.txt')
+const fileLocation = path.join(__static, 'static', 'test.txt')
 // const fileLocation = path.join(process.cwd(), 'public', 'test.txt')
 const fileContents = fs.readFileSync(fileLocation, 'utf8')
 console.log(fileContents)
@@ -25,12 +25,17 @@ protocol.registerSchemesAsPrivileged(
     }
   ]
 );
-
+console.log(__dirname)
 function createWindow () {
   const win = new BrowserWindow({
     width: 600,
     height: 1000,
-    title: process.env.VITE_NAME + dayjs()
+    title: process.env.VITE_NAME + dayjs() + fileContents,
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      preload: path.join(__dirname, 'preload', 'test.js')
+    }
   })
   createProtocol('app');  
   if(process.env.DEV_SERVER_URL){
