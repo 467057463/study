@@ -8,7 +8,7 @@ export default defineConfig({
     vue(), 
     viteElectron({
       preload: {
-        dir: 'preload'
+        preloadDir: 'src/preload'
       }
     })
   ]

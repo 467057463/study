@@ -1,6 +1,18 @@
-import { app, BrowserWindow, protocol } from "electron";
+import { app, BrowserWindow, protocol, Notification  } from "electron";
 import dayjs from "dayjs";
-import createProtocol from '../vite-plugin-electron/createProtocol'
+import createProtocol from '../vite-plugin-electron/createProtocol';
+const fs = require('fs')
+const path = require('path')
+const fileLocation = path.join(__dirname, 'test.txt')
+// const fileLocation = path.join(process.cwd(), 'public', 'test.txt')
+const fileContents = fs.readFileSync(fileLocation, 'utf8')
+console.log(fileContents)
+
+function showNotification () {
+  new Notification({ 
+    title: 'test', body: fileContents 
+  }).show()
+}
 
 protocol.registerSchemesAsPrivileged(
   [
@@ -30,4 +42,7 @@ function createWindow () {
 
 app.whenReady().then(() => {
   createWindow()
+})
+.then(() => {
+  showNotification()
 })
