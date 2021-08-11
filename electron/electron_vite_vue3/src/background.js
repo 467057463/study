@@ -33,6 +33,7 @@ function createWindow () {
     title: process.env.VITE_NAME + dayjs() + fileContents,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
       enableRemoteModule: true,
       preload: path.join(__dirname, 'preload', 'test.js')
     }
@@ -47,7 +48,17 @@ function createWindow () {
 
 app.whenReady().then(() => {
   createWindow()
+  app.on('activate', function () {
+    // On macOS it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+
 })
 .then(() => {
   showNotification()
+})
+
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit()
 })

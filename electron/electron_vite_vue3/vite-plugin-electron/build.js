@@ -3,7 +3,7 @@ const path = require('path')
 const { build: electronBuilder } = require('electron-builder');
 const { stat, remove, writeFile } = require('fs-extra')
 
-import { mainProcessBuild, log } from './util';
+import { mainProcessBuild, log, preloadBuild } from './util';
 
 async function generatePackageJson(config, dependencies) {
   const original = require(path.join(config.root, './package.json'))
@@ -27,6 +27,7 @@ async function generatePackageJson(config, dependencies) {
 export default async function(config){
   const startTime = Date.now();
   log('info', `正在打包electron...`)
+  await preloadBuild(config, 'build');
   const { dependencies } = await mainProcessBuild(config, 'build')
   // console.log(dependencies)
   await generatePackageJson(config, dependencies)
