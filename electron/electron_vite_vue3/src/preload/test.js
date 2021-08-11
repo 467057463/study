@@ -1,3 +1,4 @@
 import dayjs from "dayjs";
 
-console.log(dayjs(), 'abcdefgegsss')
+console.log(dayjs(), 'abcd')
+

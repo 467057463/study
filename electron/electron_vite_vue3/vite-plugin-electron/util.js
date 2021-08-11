@@ -74,13 +74,17 @@ export function log(logLevel, message){
 }
 
 export async function preloadBuild(viteConfig){
-  const res = await fs.readdir(path.join(viteConfig.root, 'src', 'preload'));
-  console.log(res);
+  const entryPoints = [];
+  const preloadPath = path.join(viteConfig.root, 'src', 'preload');
+  const res = await fs.readdir(preloadPath);
+  for(const i of res){
+    const file = await fs.stat(path.join(preloadPath, i));
+    if(file.isFile() && ['.js', '.ts'].includes(path.extname('i'))){
+      entryPoints.push(path.join(preloadPath, i))
+    }
+  }
   await build({
-    entryPoints: [
-      path.join(viteConfig.root, 'src', 'preload', 'test.js'),
-      path.join(viteConfig.root, 'src', 'preload', 'test2.js')
-    ],
+    entryPoints,
     outdir: 'dist/preload',
     platform: 'node',
     bundle: true,
