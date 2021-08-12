@@ -7,13 +7,6 @@
 import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
-console.log(__dirname)
-const fs = require('fs')
-const path = require('path')
-const fileLocation = path.join(__dirname, 'static', 'test.txt')
-// const fileContents = fs.readFileSync(fileLocation, 'utf8')
-// console.log(fileContents)
-
 export default defineComponent({
   name: 'App',
   components: {

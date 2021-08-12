@@ -25,7 +25,7 @@ protocol.registerSchemesAsPrivileged(
     }
   ]
 );
-// console.log(__dirname)
+console.log(__dirname)
 function createWindow () {
   const win = new BrowserWindow({
     width: 600,
@@ -43,7 +43,6 @@ function createWindow () {
     win.loadURL(process.env.DEV_SERVER_URL)
   } else {
     win.loadURL('app://./index.html')
-    // win.loadURL('http://www.baidu.com')
   }
 }
 

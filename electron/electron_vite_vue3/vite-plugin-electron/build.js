@@ -32,14 +32,32 @@ export default async function(config){
   // console.log(dependencies)
   await generatePackageJson(config, dependencies)
   await electronBuilder({
-    publish: 'never',
+    // publish: 'never',
     config: {
-      productName: '',
       appId: '',
+      productName: '',
+      copyright: 'Copyright © 2021',
       directories: {
         output: 'dist_application',
         buildResources: 'build',
         app: 'dist'
+      },
+      asar: true,
+      win: {
+        target: [
+          {
+            target: 'nsis',
+            arch: ['x64'],
+          },
+        ],
+        artifactName: '${productName} Setup ${version}.${ext}',
+      },
+      nsis: {
+        oneClick: false,
+        language: '2052',
+        perMachine: true,
+        allowToChangeInstallationDirectory: true,
+        include: "build/installer.nsh"
       },
     }
   })

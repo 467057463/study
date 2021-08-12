@@ -36,6 +36,8 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
+
+console.log(__dirname, process.cwd())
 export default defineComponent({
   name: 'HelloWorld',
   props: {
