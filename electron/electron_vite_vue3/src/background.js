@@ -25,7 +25,7 @@ protocol.registerSchemesAsPrivileged(
     }
   ]
 );
-// console.log(__dirname)
+console.log(__dirname, process.cwd())
 function createWindow () {
   const win = new BrowserWindow({
     width: 600,

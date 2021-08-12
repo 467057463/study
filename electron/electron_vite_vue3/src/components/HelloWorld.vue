@@ -38,6 +38,14 @@
 import { ref, defineComponent } from 'vue'
 
 console.log(__dirname, process.cwd())
+const worker = new Worker('/worker/worker.js');
+worker.postMessage('Hello World');
+worker.postMessage({method: 'echo', args: ['Work']});
+
+worker.onmessage = function(event){
+  console.log('received message', event)
+}
+
 export default defineComponent({
   name: 'HelloWorld',
   props: {
