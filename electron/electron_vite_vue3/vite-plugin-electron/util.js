@@ -69,7 +69,7 @@ const logLevelMap = {
 export function log(logLevel, message){
   const color = logLevelMap[logLevel]
   console.log(
-    `${chalk[color].bold(logLevel)}: ${message}`
+    `${chalk[color].bold(`[vite_plugin_electron_builder]`)} ${message}`
   )
 }
 

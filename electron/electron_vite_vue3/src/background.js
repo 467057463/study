@@ -28,7 +28,7 @@ protocol.registerSchemesAsPrivileged(
 console.log(__dirname, process.cwd())
 function createWindow () {
   const win = new BrowserWindow({
-    width: 600,
+    width: 700,
     height: 1000,
     title: process.env.VITE_NAME + dayjs() + fileContents,
     webPreferences: {
