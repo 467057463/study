@@ -8,9 +8,10 @@ const fileLocation = path.join(__static, 'static', 'test.txt')
 const fileContents = fs.readFileSync(fileLocation, 'utf8')
 console.log(fileContents)
 
-function showNotification () {
+function showNotification (title: string):void {
   new Notification({ 
-    title: 'test', body: fileContents 
+    title, 
+    body: fileContents 
   }).show()
 }
 
@@ -25,10 +26,10 @@ protocol.registerSchemesAsPrivileged(
     }
   ]
 );
-console.log(__dirname)
+console.log(__dirname, process.cwd())
 function createWindow () {
   const win = new BrowserWindow({
-    width: 600,
+    width: 700,
     height: 1000,
     title: process.env.VITE_NAME + dayjs() + fileContents,
     webPreferences: {
@@ -43,6 +44,7 @@ function createWindow () {
     win.loadURL(process.env.DEV_SERVER_URL)
   } else {
     win.loadURL('app://./index.html')
+    // win.loadURL('http://www.baidu.com')
   }
 }
 
@@ -56,7 +58,7 @@ app.whenReady().then(() => {
 
 })
 .then(() => {
-  showNotification()
+  showNotification('bbs')
 })
 
 app.on('window-all-closed', function () {

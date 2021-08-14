@@ -13,7 +13,7 @@ export async function mainProcessBuild(viteConfig, mode, onRebuild){
   const dependenciesSet = new Set()
   let buildConfig = {
     entryPoints: [
-      path.join(viteConfig.root, 'src', './background.js')
+      path.join(viteConfig.root, 'src', './background.ts')
     ],
     outfile: 'dist/main.js',
     platform: 'node',
@@ -74,22 +74,23 @@ export function log(logLevel, message){
 }
 
 export async function preloadBuild(viteConfig, mode = 'dev'){
-  // const entryPoints = [];
-  // const preloadPath = path.join(viteConfig.root, 'src', 'preload');
-  // const res = await fs.readdir(preloadPath);
-  // for(const i of res){
-  //   const file = await fs.stat(path.join(preloadPath, i));
-  //   // console.log(['.js', '.ts'].includes(path.extname(i)), path.extname(i))
-  //   if(file.isFile() && ['.js', '.ts'].includes(path.extname(i))){
-  //     entryPoints.push(path.join(preloadPath, i))
-  //   }
-  // }
-  // console.log(entryPoints)
+  const entryPoints = [];
+  const preloadPath = path.join(viteConfig.root, 'src', 'preload');
+  const res = await fs.readdir(preloadPath);
+  for(const i of res){
+    const file = await fs.stat(path.join(preloadPath, i));
+    // console.log(['.js', '.ts'].includes(path.extname(i)), path.extname(i))
+    if(file.isFile() && ['.js', '.ts'].includes(path.extname(i))){
+      entryPoints.push(path.join(preloadPath, i))
+    }
+  }
+  console.log(entryPoints)
   await build({
-    entryPoints: [
-      path.join(viteConfig.root, 'src', 'preload', 'test.js'),
-      path.join(viteConfig.root, 'src', 'preload', 'test2.js')
-    ],
+    entryPoints,
+    // entryPoints: [
+    //   path.join(viteConfig.root, 'src', 'preload', 'test.js'),
+    //   path.join(viteConfig.root, 'src', 'preload', 'test2.js')
+    // ],
     outdir: 'dist/preload',
     platform: 'node',
     bundle: true,
