@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { viteElectron } from 'vite-plugin-electron-builder';
+import viteElectron from 'vite-plugin-electron-builder';
+// import viteElectron from './vite-plugin-electron';
 
 // https://vitejs.dev/config/
 export default defineConfig({

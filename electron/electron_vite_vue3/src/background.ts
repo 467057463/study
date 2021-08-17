@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { app, BrowserWindow, protocol, Notification  } from "electron";
 import dayjs from "dayjs";
 import createProtocol from './createProtocol';

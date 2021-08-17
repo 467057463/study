@@ -1,6 +1,7 @@
 import { app, BrowserWindow, protocol, Notification  } from "electron";
 import dayjs from "dayjs";
-import createProtocol from '../vite-plugin-electron/createProtocol';
+// import createProtocol from '../vite-plugin-electron/createProtocol';
+import createProtocol from './createProtocol';
 const fs = require('fs')
 const path = require('path')
 const fileLocation = path.join(__static, 'static', 'test.txt')
