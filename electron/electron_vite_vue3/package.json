@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "dayjs": "^1.10.6",
-    "vite-plugin-electron-builder": "0.0.6",
+    "electron-log": "^4.4.1",
+    "vite-plugin-electron-builder": "^0.0.8",
     "vue": "^3.0.5"
   },
   "devDependencies": {
