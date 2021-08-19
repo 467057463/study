@@ -35,7 +35,7 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 700,
     height: 1000,
-    title: process.env.VITE_NAME + dayjs() + fileContents,
+    title: import.meta.env.VITE_NAME + dayjs() + fileContents,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -44,8 +44,8 @@ function createWindow () {
     }
   })
   createProtocol('app');  
-  if(process.env.DEV_SERVER_URL){
-    win.loadURL(process.env.DEV_SERVER_URL)
+  if(import.meta.env.DEV_SERVER_URL){
+    win.loadURL(import.meta.env.DEV_SERVER_URL)
   } else {
     win.loadURL('app://./index.html')
     // win.loadURL('http://www.baidu.com')

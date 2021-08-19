@@ -2,8 +2,8 @@ import { app, BrowserWindow, protocol, Notification  } from "electron";
 import dayjs from "dayjs";
 // import createProtocol from '../vite-plugin-electron/createProtocol';
 import createProtocol from './createProtocol';
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs';
+import path from 'path';
 const fileLocation = path.join(__static, 'static', 'test.txt')
 // const fileLocation = path.join(process.cwd(), 'public', 'test.txt')
 const fileContents = fs.readFileSync(fileLocation, 'utf8')
@@ -36,7 +36,7 @@ function createWindow () {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
-      preload: path.join(__dirname, 'preload', 'test.js')
+      preload: path.join(__dirname, 'preload/test', 'test.js')
     }
   })
   createProtocol('app');  
