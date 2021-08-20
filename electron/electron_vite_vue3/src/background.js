@@ -1,4 +1,4 @@
-import { app, BrowserWindow, protocol, Notification  } from "electron";
+import { app, BrowserWindow, protocol, Notification, session } from "electron";
 import dayjs from "dayjs";
 // import createProtocol from '../vite-plugin-electron/createProtocol';
 import createProtocol from './createProtocol';
@@ -11,7 +11,7 @@ console.log(fileContents)
 
 function showNotification () {
   new Notification({ 
-    title: 'test', body: fileContents 
+    title: 'test abcdefg', body: fileContents 
   }).show()
 }
 
@@ -39,6 +39,7 @@ function createWindow () {
       preload: path.join(__dirname, 'preload/test', 'test.js')
     }
   })
+  const ses = win
   createProtocol('app');  
   if(process.env.DEV_SERVER_URL){
     win.loadURL(process.env.DEV_SERVER_URL)

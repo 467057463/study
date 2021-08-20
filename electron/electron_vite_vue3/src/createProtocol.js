@@ -4,7 +4,7 @@ import { readFile } from 'fs'
 import { URL } from 'url'
 import log from 'electron-log';
 
-export default (scheme) => {
+export default (scheme, protocol = protocol) => {
   protocol.registerBufferProtocol(
     scheme,
     (request, respond) => {

@@ -1,23 +1,8 @@
 // @ts-nocheck
-import { app, BrowserWindow, protocol, Notification  } from "electron";
+import { app, BrowserWindow, protocol, Notification, session } from "electron";
 import dayjs from "dayjs";
-import log from 'electron-log';
-// import { createProtocol } from 'vite-plugin-electron-builder/lib';
 import createProtocol from './createProtocol';
-console.log('abcdef', createProtocol)
-const fs = require('fs')
-const path = require('path')
-const fileLocation = path.join(__static, 'static', 'test.txt')
-// const fileLocation = path.join(process.cwd(), 'public', 'test.txt')
-const fileContents = fs.readFileSync(fileLocation, 'utf8')
-console.log(fileContents)
-
-function showNotification (title: string):void {
-  new Notification({ 
-    title, 
-    body: fileContents 
-  }).show()
-}
+const path = require('path');
 
 protocol.registerSchemesAsPrivileged(
   [
@@ -31,21 +16,28 @@ protocol.registerSchemesAsPrivileged(
   ]
 );
 console.log(__dirname, process.cwd())
-function createWindow () {
+async function createWindow () {
   const win = new BrowserWindow({
     width: 700,
     height: 1000,
-    title: import.meta.env.VITE_NAME + dayjs() + fileContents,
+    title: process.env.VITE_NAME + dayjs(),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
-      preload: path.join(__dirname, 'preload', 'test.js')
+      preload: path.join(__preload, 'test.js'),
+      partition: 'persist:test_session',
+      webviewTag: true,
     }
   })
-  createProtocol('app');  
-  if(import.meta.env.DEV_SERVER_URL){
-    win.loadURL(import.meta.env.DEV_SERVER_URL)
+  const ses = session.fromPartition('persist:test_webview_session');
+  ses.setProxy({
+    proxyRules:"socks5://127.0.0.1:1080"
+  })
+  createProtocol('app', ses.protocol);  
+  if(process.env.DEV_SERVER_URL){
+    win.loadURL(process.env.DEV_SERVER_URL)
+    // win.loadURL('http://www.google.com')
   } else {
     win.loadURL('app://./index.html')
     // win.loadURL('http://www.baidu.com')
@@ -59,11 +51,8 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
+})
 
-})
-.then(() => {
-  showNotification('bbs')
-})
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()

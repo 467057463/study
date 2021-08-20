@@ -36,15 +36,15 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import fs from 'fs';
-console.log(fs.stat)
+// import fs from 'fs';
+// console.log(fs.stat)
 // const fs = require('fs');
 // const path = require('path')
 // console.log('path', path, __dirname, process.cwd())
 // const fileLocation = path.join(process.cwd(), 'public/static', 'test.txt')
 // // const fileLocation = path.join(process.cwd(), 'public', 'test.txt')
 // const fileContents = fs.readFileSync(fileLocation, 'utf8')
-// console.log(fileContents)
+console.log('fileContents')
 
 const worker = new Worker('/worker/worker.js');
 worker.postMessage('Hello World');

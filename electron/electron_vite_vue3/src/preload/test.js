@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 
-console.log(dayjs(), 'abcd')
+console.log('abcd')
 
