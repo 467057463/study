@@ -11,14 +11,16 @@ export default defineConfig({
       mainProcessFile: 'src/background.ts',
       preloadDir: 'src/preload',
       builderOptions: {
-        appId: 'com.example.Vite_electron_vue3',
-        productName: 'Vite_electron_vue3',
+        appId: 'com.example.viteElectronTest',
+        productName: 'vite electron 测试项目',
         copyright: 'Copyright © 2021',
         directories: {
           output: 'dist_application',
           buildResources: 'build',
           app: 'dist'
         },
+        files: ['**'],
+        extends: null,
         asar: true,
         win: {
           target: [
@@ -29,13 +31,14 @@ export default defineConfig({
           ],
           artifactName: '${productName} Setup ${version}.${ext}',
         },
-        nsis: {
-          oneClick: false,
-          language: '2052',
-          perMachine: true,
-          allowToChangeInstallationDirectory: true,
-          include: "build/installer.nsh"
-        },
+        // nsis: {
+          // oneClick: false,
+          // language: '2052',
+          // perMachine: true,
+          // allowToChangeInstallationDirectory: true,
+          // createDesktopShortcut: "always",
+          // include: "build/installer.nsh"
+        // },
       }
     })
   ]

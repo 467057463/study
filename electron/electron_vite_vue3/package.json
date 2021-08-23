@@ -1,12 +1,12 @@
 {
   "name": "electron_vite_vue3",
   "description": "electron_vite",
-  "version": "0.0.3",
+  "version": "0.0.14",
   "author": "m2",
   "main": "main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "npm version patch && vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
   "dependencies": {

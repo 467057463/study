@@ -3,6 +3,9 @@ import { app, BrowserWindow, protocol, Notification, session } from "electron";
 import dayjs from "dayjs";
 import createProtocol from './createProtocol';
 const path = require('path');
+import log from 'electron-log';
+
+log.error(__dirname, process.cwd())
 
 protocol.registerSchemesAsPrivileged(
   [
@@ -15,16 +18,16 @@ protocol.registerSchemesAsPrivileged(
     }
   ]
 );
-console.log(__dirname, process.cwd())
 async function createWindow () {
   const win = new BrowserWindow({
     width: 700,
     height: 1000,
-    title: process.env.VITE_NAME + dayjs(),
+    title: import.meta.env.VITE_NAME + dayjs(),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
+      webSecurity: false,
       preload: path.join(__preload, 'test.js'),
       partition: 'persist:test_session',
       webviewTag: true,
@@ -34,9 +37,9 @@ async function createWindow () {
   ses.setProxy({
     proxyRules:"socks5://127.0.0.1:1080"
   })
-  createProtocol('app', ses.protocol);  
-  if(process.env.DEV_SERVER_URL){
-    win.loadURL(process.env.DEV_SERVER_URL)
+  createProtocol('app', 'persist:test_session');  
+  if(import.meta.env.DEV_SERVER_URL){
+    win.loadURL(import.meta.env.DEV_SERVER_URL)
     // win.loadURL('http://www.google.com')
   } else {
     win.loadURL('app://./index.html')

@@ -11,21 +11,22 @@
 </template>
 
 <script lang="ts">
-// const { session } = require("electron");
+const fs = require('fs');
 const path = require('path');
 const url = require('url')
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  },
+  // components: {
+  //   HelloWorld
+  // },
 
   data(){
-    console.log(import.meta)
-    const __preload = import.meta.env.MODE === 'development' ? path.join(process.cwd(), 'dist/preload') : path.join(__dirname, 'preload')
+    // console.log(import.meta)
+    // const __preload = import.meta.env.MODE === 'development' ? path.join(process.cwd(), 'dist/preload') : path.join(__dirname, '../../app.asar', 'preload')
     return{
       // @ts-ignore
       preload: url.pathToFileURL(path.join(__preload, 'test.js'))
@@ -37,14 +38,16 @@ export default defineComponent({
     const webview = document.querySelector('webview');    
     // @ts-ignore
     webview.addEventListener('dom-ready', () => {
-      // console.log(session)
       // @ts-ignore
       webview.openDevTools()
-      // webview.webContents.session
-      // const ses = session.fromPartition('persist:test_webview_session');
     })
-    // const $webview = this.$refs.webview;
-    // $webview.loadURL('https://www.baidu.com')
+    
+    // @ts-ignore    
+    console.log(__static)
+    // @ts-ignore
+    const fileLocation = path.join(__static, 'static/test.txt');
+    const fileContents = fs.readFileSync(fileLocation, 'utf8')
+    console.log(fileContents)
   }
 })
 </script>
