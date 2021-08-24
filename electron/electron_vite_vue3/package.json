@@ -1,18 +1,19 @@
 {
   "name": "electron_vite_vue3",
   "description": "electron_vite",
-  "version": "0.0.14",
+  "version": "0.0.26",
   "author": "m2",
   "main": "main.js",
   "scripts": {
     "dev": "vite",
     "build": "npm version patch && vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "debug": "node --inspect-brk ./node_modules/vite/bin/vite.js"
   },
   "dependencies": {
     "dayjs": "^1.10.6",
     "electron-log": "^4.4.1",
-    "vite-plugin-electron-builder": "0.0.9",
+    "vite-plugin-electron-builder": "^0.0.11",
     "vue": "^3.0.5"
   },
   "devDependencies": {

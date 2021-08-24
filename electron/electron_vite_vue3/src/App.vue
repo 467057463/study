@@ -1,22 +1,29 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite + electron" /> -->
-  <webview 
+  <!-- <webview 
     ref="webview"
     src="http://www.google.com"
     style="display:inline-flex; width:100vw; height:100vh"  
     partition="persist:test_webview_session"
     :preload="preload"
-  ></webview>
+  ></webview> -->
+  <b>test</b>
 </template>
 
 <script lang="ts">
-const fs = require('fs');
-const path = require('path');
-const url = require('url')
+// import fs from 'fs';
+// console.log(fs)
+// import path from 'path';
+// const { join } = path;
+// import url from 'url';
 import { defineComponent } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
-
+// const net = require('net');
+// import dayjs from "dayjs";
+// console.log(dayjs())
+// import net from 'net';
+// console.log(net)
 
 export default defineComponent({
   name: 'App',
@@ -29,25 +36,25 @@ export default defineComponent({
     // const __preload = import.meta.env.MODE === 'development' ? path.join(process.cwd(), 'dist/preload') : path.join(__dirname, '../../app.asar', 'preload')
     return{
       // @ts-ignore
-      preload: url.pathToFileURL(path.join(__preload, 'test.js'))
+      // preload: url.pathToFileURL(path.join(__preload, 'test.js'))
     }
   },
 
   mounted(){
     // @ts-ignore
-    const webview = document.querySelector('webview');    
-    // @ts-ignore
-    webview.addEventListener('dom-ready', () => {
-      // @ts-ignore
-      webview.openDevTools()
-    })
+    // const webview = document.querySelector('webview');    
+    // // @ts-ignore
+    // webview.addEventListener('dom-ready', () => {
+    //   // @ts-ignore
+    //   webview.openDevTools()
+    // })
     
     // @ts-ignore    
-    console.log(__static)
+    // console.log(__static)
     // @ts-ignore
-    const fileLocation = path.join(__static, 'static/test.txt');
-    const fileContents = fs.readFileSync(fileLocation, 'utf8')
-    console.log(fileContents)
+    // const fileLocation = join(__static, 'static/test.txt');
+    // const fileContents = fs.readFileSync(fileLocation, 'utf8')
+    // console.log(fileContents)
   }
 })
 </script>
