@@ -2,7 +2,7 @@
 import { app, BrowserWindow, protocol, Notification, session } from "electron";
 import dayjs from "dayjs";
 import createProtocol from './createProtocol';
-const path = require('path');
+import path from 'path';
 import log from 'electron-log';
 
 log.error(__dirname, process.cwd())

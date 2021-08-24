@@ -12,11 +12,11 @@
 </template>
 
 <script lang="ts">
-// import fs from 'fs';
-// console.log(fs)
-// import path from 'path';
-// const { join } = path;
-// import url from 'url';
+import fs, { appendFile } from 'fs';
+console.log(fs, appendFile)
+import path from 'path';
+const { join } = path;
+import url from 'url';
 import { defineComponent } from 'vue'
 // import HelloWorld from './components/HelloWorld.vue'
 // const net = require('net');
@@ -50,11 +50,11 @@ export default defineComponent({
     // })
     
     // @ts-ignore    
-    // console.log(__static)
+    console.log(__static)
     // @ts-ignore
-    // const fileLocation = join(__static, 'static/test.txt');
-    // const fileContents = fs.readFileSync(fileLocation, 'utf8')
-    // console.log(fileContents)
+    const fileLocation = join(__static, 'static/test.txt');
+    const fileContents = fs.readFileSync(fileLocation, 'utf8')
+    console.log(fileContents)
   }
 })
 </script>
