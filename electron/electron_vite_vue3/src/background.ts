@@ -1,23 +1,14 @@
-// @ts-nocheck
 import { app, BrowserWindow, protocol, Notification, session } from "electron";
 import dayjs from "dayjs";
-import createProtocol from './createProtocol';
 import path from 'path';
 import log from 'electron-log';
+// @ts-ignore
+import createProtocol from './createProtocol';
 
-log.error(__dirname, process.cwd())
+// log.error(__dirname, process.cwd())
 
-protocol.registerSchemesAsPrivileged(
-  [
-    { 
-      scheme: 'app', 
-      privileges: { 
-        secure: true, 
-        standard: true 
-      } 
-    }
-  ]
-);
+protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }]);
+
 async function createWindow () {
   const win = new BrowserWindow({
     width: 700,
@@ -60,3 +51,4 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
+
