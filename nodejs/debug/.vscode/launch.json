@@ -11,7 +11,10 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\node\\index.js"
+      "program": "${workspaceFolder}\\dist\\index.js",
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector"
     }
   ]
 }
