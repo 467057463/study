@@ -1,7 +1,7 @@
 {
   "name": "electron_vite_vue3",
   "description": "electron_vite",
-  "version": "0.0.66",
+  "version": "0.0.67",
   "author": "m2",
   "main": "main.js",
   "scripts": {

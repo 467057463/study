@@ -65,8 +65,8 @@ app.whenReady().then(async () => {
   const ses = session.fromPartition(partition);
   if(import.meta.env.DEV){
     // 加载本地插件
-    const vueDevToolsPath = `C:\\Users\\admin\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\ljjemllljcmogpfapbkkighbhhppjdbg\\6.0.0.15_0`;
-    await ses.loadExtension(vueDevToolsPath);
+    // const vueDevToolsPath = `C:\\Users\\m2\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\ljjemllljcmogpfapbkkighbhhppjdbg\\6.0.0.15_0`;
+    // await ses.loadExtension(vueDevToolsPath);
   }
   createWindow()
 })
