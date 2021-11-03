@@ -1,10 +1,16 @@
-import { app, BrowserWindow, protocol, Notification, session } from "electron";
+import { 
+  app, 
+  BrowserWindow, 
+  protocol, 
+  Notification, 
+  session 
+} from "electron";
 import dayjs from "dayjs";
 import path from 'path';
+import os from 'os';
 import log from 'electron-log';
-// @ts-ignore
-import createProtocol from './createProtocol';
-
+import createProtocol from './electron/createProtocol';
+import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer';
 
 
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }]);
@@ -62,11 +68,19 @@ app.on('activate', () => {
 });
 
 app.whenReady().then(async () => {
-  const ses = session.fromPartition(partition);
   if(import.meta.env.DEV){
     // 加载本地插件
-    const vueDevToolsPath = `C:\\Users\\admin\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\ljjemllljcmogpfapbkkighbhhppjdbg\\6.0.0.15_0`;
+    const ses = session.fromPartition(partition);
+    const vueDevToolsPath = path.join(
+      os.homedir(),
+      '/AppData/Local/Google/Chrome/User Data/Default/Extensions/ljjemllljcmogpfapbkkighbhhppjdbg/6.0.0.15_0'
+    )
     await ses.loadExtension(vueDevToolsPath);
+    
+    // 自动下载插件
+    // installExtension(VUEJS3_DEVTOOLS)
+    //   .then((name) => console.log(`Added Extension:  ${name}`))
+    //   .catch((err) => console.log('An error occurred: ', err));
   }
   createWindow()
 })
