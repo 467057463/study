@@ -1,0 +1,12 @@
+{
+  "code": 200,
+  "success": true,
+  "data": {
+    "forceUpdate": false, // 是否强制更新
+    "fullUpdate": true, // 是否全量更新
+    "upDateUrl": "http://127.0.0.1:4000/", // electron-updater传入的url
+    "restart": true,  // 增量更新是否重启
+    "message": "我要升级成0.0.2", // 更新说明
+    "version": "0.0.2" // 版本号
+  }
+}
