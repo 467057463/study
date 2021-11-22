@@ -1,11 +1,10 @@
-// console.log(R)
+const curry = R.curry;
 
-const add = R.curry((x, y, c) => {
-  return x + y + c;
-})
+const match = curry((wath, str) => str.match(wath));
 
-const increment = add(1);
-const addTen = add(10);
+const replace = curry((waht, replacement, str) => str.replace(waht, replacement));
 
-console.log(addTen(5))
-console.log(increment(5))
+const filter = curry((f, ary) => ary.filter(f));
+
+const map = curry((f, ary) => ary.map(f));
+
