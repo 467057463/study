@@ -1,0 +1,12 @@
+{
+	"scripts": {
+		"build": "gulp --require sucrase/register/ts -f build/gulpfile.ts"
+	},
+	"dependencies": {
+		"gulp": "^4.0.2"
+	},
+	"devDependencies": {
+		"gulp-babel": "^8.0.0",
+		"sucrase": "^3.20.3"
+	}
+}

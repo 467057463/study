@@ -24,7 +24,7 @@
 
 
 function target(){
-
+  sss
 }
 
 var p = new Proxy(target, {
