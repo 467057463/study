@@ -1,36 +1,26 @@
-// function sub(left, right){
-//   return left + right;
-// }
-// var p = new Proxy(sub, {
-//   apply(target, ctx, args){
-//     console.log(args, arguments)
-//     return Reflect.apply(...arguments) * 2
-//   }
-// })
-
-// var target = {
-//   _prop: 'foo',
-//   prop: 'foo'
-// }
-
-// var p = new Proxy(target, {
-//   has(target, key){
-//     if(key[0] === '_'){
-//       return false
-//     }
-//     return key in target
-//   }
-// })
-
-
-function target(){
-  sss
+let obj = {
+  name: 'mm',
+  say(){
+    console.log('wu wu')
+  }
 }
 
-var p = new Proxy(target, {
-  construct(target, args, newTarget){
-    console.log(target, args, newTarget)
-    return {}
+// function obj(){
+//   console.log('wu wu')
+// }
+
+const objProxy = new Proxy(obj, {
+  get(target, attr){
+    // console.log(arguments)
+    const v = Reflect.get(...arguments);
+    console.log(v);
+    return v;
+  },
+  apply(){
+    console.log(arguments)
+    return Reflect.apply(...arguments)
   }
 })
 
+// objProxy.say();
+console.log(objProxy)

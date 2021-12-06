@@ -1,18 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <p>
+    {{message}}
+  </p>
+  <input v-model="message"/>
+  <hello-world
+    v-for="item of list"
+    :text="item" 
+  />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts" setup>
+import { ref } from 'vue'
+import HelloWorld from './components/HelloWorld.vue';
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-})
+const message = ref('hello world');
+const list = ["111", '2222']
 </script>
 
 <style>
