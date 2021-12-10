@@ -6,6 +6,7 @@
 		"gulp": "^4.0.2"
 	},
 	"devDependencies": {
+		"fast-glob": "^3.2.7",
 		"gulp-babel": "^8.0.0",
 		"sucrase": "^3.20.3"
 	}
