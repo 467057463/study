@@ -1,20 +1,14 @@
 <template>
-  <p>
-    {{message}}
-  </p>
-  <input v-model="message"/>
-  <hello-world
-    v-for="item of list"
-    :text="item" 
-  />
+<input v-model="name"/>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue';
-
-const message = ref('hello world');
-const list = ["111", '2222']
+import { watch, ref, computed, watchEffect, reactive,  nextTick, readonly, isProxy, isReactive, isReadonly, toRaw, markRaw, toRef, toRefs, getCurrentInstance } from 'vue';
+const obj = reactive({name: 'mm'})
+// const name = toRef(obj, 'name')
+const {name} = toRefs(obj)
+console.log(name)
+console.log(getCurrentInstance())
 </script>
 
 <style>
