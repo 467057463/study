@@ -1,5 +1,5 @@
 <template>
-<input v-model="name"/>
+<input v-model="name" v-loading.test="'ssss'"/>
 </template>
 
 <script lang="ts" setup>
