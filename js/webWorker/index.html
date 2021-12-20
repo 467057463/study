@@ -5,10 +5,18 @@
   <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
   <title>web workers</title>
   <style>   
+    .container{
+      width: 500px;
+      height: 200px;
+      /* background-image: repeating-linear-gradient( to bottom right, yellow 0, yellow 5%, red 5%, red 10%); */
+      /* background-image: radial-gradient(circle at 0 0, yellow, red); */
+      box-shadow: inset -5px -5px 0 red, 10px 10px 10px yellow;
+    }
   </style>
 </head>
 
 <body>  
+  <div class="container"></div>
   <span id="count">0</span>
   <button id="show">show</button>
   <script src="index.js"></script>

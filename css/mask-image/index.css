@@ -1,0 +1,26 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.item{
+  width: 100vw;
+  height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1528287942171-fbe365d1d9ac?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&w=1200&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* 图片 */
+  -webkit-mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/sun.svg);
+  -webkit-mask-repeat: repeat-x;
+  -webkit-mask-size: 10vmin;
+  -webkit-mask-position: center;
+
+  /* 渐变 */
+  /* -webkit-mask-image: linear-gradient(
+    to bottom right, 
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 1) 50%
+  ); */
+}
