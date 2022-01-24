@@ -1,13 +1,3 @@
-const arr = [1, '1', 1 , 2, NaN, NaN, null, null, {}, {}];
+const canvas = document.querySelector('#canvas');
 
-function shallowCopy(obj){
-  if(typeof obj !== 'object') return;
-  let res = obj instanceof Array ? [] : {};
-  for(let key in obj){
-    const item = obj[key];
-    res[key] = typeof item !== 'object' ? item : shallowCopy(item);
-  }
-  return res;
-}
-
-shallowCopy(arr)
+const ctx = canvas.getContext('2d');
