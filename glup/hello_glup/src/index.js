@@ -1,1 +1,9 @@
-console.log(test)
+() => {
+  console.log('abc')
+}
+
+class Test {
+  name(){
+    return 'mm'
+  }
+}
