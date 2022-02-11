@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node -r sucrase/register/ts src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dayjs": "^1.10.7",
+    "sucrase": "^3.20.3",
     "typescript": "^4.5.4"
   }
 }

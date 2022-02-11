@@ -1,0 +1,51 @@
+@use 'sass:meta';
+
+$_radius: 3px;
+
+
+@mixin rounded {
+  border-radius: $_radius;
+}
+
+@mixin order($height, $selectors...){
+  @for $i from 0 to length($selectors){
+    #{nth($selectors, $i + 1)} {
+      height: $height;
+      @content;
+    }
+  }
+}
+
+@mixin b($block){
+  $B: el + '-' + $block !global;
+
+  .#{$B}{
+    @content;
+  }
+}
+
+@mixin m($modifier){
+  $selector: &;
+  $currentSelector: '';
+  
+  @each $unit in $modifier {
+    $currentSelector: #{
+      $currentSelector +
+      $selector +
+      '__' +
+      $unit +
+      ','
+    }
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin test(){
+  .#{$B}{
+    color: yellow;
+  }
+}
