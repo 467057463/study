@@ -1,11 +1,11 @@
-function hello(name, date){
-  console.log(`hello ${name} at ${date.toDateString()}`)
+class Base {
+  greet(){
+    console.log('abc')
+  }
 }
-hello('nn', new Date())
 
-
-let msg = 'mmm'
-
-let test = 'mm';
-
-test = null
+class Derived extends Base {
+  greet(name?: string) {
+    console.log(name)
+  }
+}
