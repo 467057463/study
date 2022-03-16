@@ -1,18 +1,14 @@
 import { ref, getCurrentInstance } from 'vue'
-const name = ref('mmm')
 
-function HelloWorld(props, ctx){
-  // console.log(props, ctx)
+function HelloWorld(_, {slots}){
   const current = getCurrentInstance()
-  console.log(current)
+  const defaultSlot = slots.default()
+  console.log(current, defaultSlot[0].children)
   return (
     <>
-      <input v-model={name.value}/>
-      {props.foo}: {name.value}
+      {slots.default()}
     </>
   )
 }
-
-// HelloWorld.props = ['foo']
 
 export default HelloWorld

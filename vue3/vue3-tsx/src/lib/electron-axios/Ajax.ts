@@ -16,7 +16,7 @@ export type Method =
 
 export type DataType = "json" | "text" | "html";
 
-type AjaxRequestConfig = {
+export type AjaxRequestConfig = {
   baseURL?: string;
   url?: string;
   data?: Data;
@@ -32,7 +32,7 @@ type AjaxRequestConfig = {
   adapter?: (config: AjaxRequestConfig) => Promise<any>;
 };
 
-type AjaxInstance = {
+export type AjaxInstance = {
   get: any;
   post: any;
   put: any;

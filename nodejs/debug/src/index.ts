@@ -1,13 +1,5 @@
-interface Animal {
-  name: string
+function greet(person, date) {
+  console.log(`Hello ${person}, today is ${date}!`);
 }
-
-interface Dog extends Animal {
-  age: number
-}
-
-let a: Animal;
-let b: Dog;
-
-a = b;
-b = a;
+ 
+greet("Brendan");
