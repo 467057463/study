@@ -9,18 +9,21 @@
  */
 
 import React from 'react';
-import {StoreProvider} from './hook/useStore';
-import Home from './views/home';
 import {Text} from 'react-native';
+import {Router, Scene, Stack} from 'react-native-router-flux';
+
+function Login() {
+  return <Text>登录</Text>;
+}
 
 const App = () => {
   return (
-    <StoreProvider>
-      <Home />
-      {/* <Text>HOMEssss</Text> */}
-    </StoreProvider>
+    <Router>
+      <Stack>
+        <Scene key="login" component={Login} title="登录" />
+      </Stack>
+    </Router>
   );
-  // return <Text>HOME</Text>;
 };
 
 export default App;
