@@ -2,14 +2,15 @@ import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-ui-lib';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Button } from 'react-native-ui-lib';
+import { Button } from '@rneui/base';
+
 
 
 function HomeScreen({navigation}) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Home!</Text>
-      <Button onPress={() => navigation.navigate('Login')} label='返回'/>
+      <Button onPress={() => navigation.navigate('Login')} title='返回'/>
     </View>
   );
 }
@@ -59,7 +60,6 @@ export default function DetailScreen(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
