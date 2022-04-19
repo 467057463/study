@@ -4,13 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Button } from '@rneui/base';
 
-
-
+import { useRecoilState } from 'recoil';
+import { currentUserInfo } from '../store/app';
 function HomeScreen({navigation}) {
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserInfo);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-      <Button onPress={() => navigation.navigate('Login')} title='返回'/>
+      <Text>Home!{JSON.stringify(currentUser)}</Text>
+      <Button onPress={() => setCurrentUser(Promise.resolve(null))} title='退出'/>
     </View>
   );
 }
