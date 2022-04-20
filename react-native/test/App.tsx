@@ -1,39 +1,23 @@
 import * as React from 'react';
-// import { View, Text } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ToastProvider } from 'react-native-toast-notifications'
-import { RecoilRoot } from 'recoil';
-// import { currentUserInfo } from './store/app';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
 
-import Index from './views/Index'
-// import Login from './views/Login';
-// import DetailScreen from './views/Detail';
+import { StoreProvider } from './hook/useStore';
+import Router from './router'
 
-const Stack = createNativeStackNavigator();
-
-function App() {
+export default function App() {
   return (
     <SafeAreaProvider>
       <ToastProvider>
-        <RecoilRoot>
+        <StoreProvider>
           <NavigationContainer>
             <StatusBar style="auto" />
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Index"
-                component={Index}
-                options={{headerShown: false}}
-              />                
-              {/* <Index/> */}
-            </Stack.Navigator>
+            <Router/>
           </NavigationContainer>
-        </RecoilRoot>
+        </StoreProvider>
       </ToastProvider>
     </SafeAreaProvider>
   );
 }
-
-export default App;

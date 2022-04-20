@@ -1,68 +1,46 @@
-
-
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Input, Button, Icon } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useToast } from "react-native-toast-notifications";
-import Schema from 'async-validator';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../hook/useStore';
+import { useValidate } from '../hook/useValidate';
 
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { ucRequest, setStorage, getStorage } from '../utils';
-import { ucLogin } from '../api/user';
-
-const descriptor = {
-  account: [{
-    required: true,
-    message: '请输入用户名/手机号码/邮箱地址'
-  }],
-  password: [{  
-    required: true, 
-    message: '请输入密码' 
-  }]  
-}
-const validator = new Schema(descriptor);
-
-export default function HomeScreen({navigation}) {
-  const [account, setAccount ] = useState('');
-  const [password, setPassword ] = useState('');
+export default observer(function Login({navigation}: NativeStackScreenProps<any, 'Login'>) {
+  const { data, changeData, validate } = useValidate({
+    account: [{
+      required: true,
+      message: '请输入用户名/手机号码/邮箱地址'
+    }],
+    password: [{  
+      required: true, 
+      message: '请输入密码' 
+    }]  
+  });
   const toast = useToast();
+  const { user } = useStore();
 
   async function submit(){
     try {
-      await validator.validate({account, password}, {
-        first: true,
-        firstFields: true
-      })
-      const res = await ucLogin({
-        account, 
-        password
-      })
-      console.log(res);
+      await validate();
+      const res = await user.login(data)
     } catch (error: any) {
-      // 验证错误
-      if(error.errors){
-        return toast.show(error.errors[0].message)   
-      }
       // api 返回错误
-      toast.show(error.msg)
-    }
-  }
-
-  async function get(){
-    try {
-      const value = await getStorage('user');
-      console.log(value)
-    } catch (error) {
-      console.log(error)      
+      if(error.msg){
+        toast.show(error.msg)
+      }
     }
   }
 
   return (
     <SafeAreaView style={styles.container}>      
-      <Input placeholder='用户名/手机号码/邮箱地址' 
-        value={account} 
-        onChangeText={(value) => setAccount(value)}
+      <Input 
+        placeholder='用户名/手机号码/邮箱地址' 
+        value={data.account} 
+        onChangeText={(value) => changeData('account', value)}
         leftIcon={
           <Icon
             name="user"
@@ -74,8 +52,8 @@ export default function HomeScreen({navigation}) {
       />
       <Input 
         placeholder='密码' 
-        value={password} 
-        onChangeText={(value) => setPassword(value)}
+        value={data.password} 
+        onChangeText={(value) => changeData('password', value)}
         secureTextEntry={true}
         leftIcon={
           <Icon
@@ -90,13 +68,18 @@ export default function HomeScreen({navigation}) {
         <Button 
           title="登录"
           onPress={submit}
+          loading={user.loading}
         />
 
-        <Button type="clear" title="忘记密码" onPress={get}/>
+        <Button 
+          type="clear" 
+          title="忘记密码"
+          onPress={() => navigation.navigate('ForgetPassword')}
+        />
       </View>
     </SafeAreaView>
   );
-}
+})
 
 const styles = StyleSheet.create({
   container: {

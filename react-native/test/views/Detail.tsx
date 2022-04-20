@@ -1,20 +1,20 @@
-import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-ui-lib';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Button } from '@rneui/base';
+import {observer} from 'mobx-react-lite'
+import { useStore } from '../hook/useStore';
 
-import { useRecoilState } from 'recoil';
-import { currentUserInfo } from '../store/app';
-function HomeScreen({navigation}) {
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserInfo);
+
+const HomeScreen = observer(() => {
+  const { user } = useStore();
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!{JSON.stringify(currentUser)}</Text>
-      <Button onPress={() => setCurrentUser(Promise.resolve(null))} title='退出'/>
+      <Text>Home!</Text>
+      <Text>{JSON.stringify(user.contents)}</Text>
+      <Button title='退出' onPress={() => user.logout()}/>
     </View>
-  );
-}
+  )
+})
 
 function SettingsScreen() {
   return (
@@ -36,7 +36,6 @@ const Tab = createBottomTabNavigator();
 
 export default function DetailScreen(){
   return(
-    // <NavigationContainer>
     <Tab.Navigator>
       <Tab.Screen 
         name="Home" 
@@ -54,7 +53,6 @@ export default function DetailScreen(){
         options={{title: '用户'}}
       />
     </Tab.Navigator>
-    // </NavigationContainer>
   )
 }
 
