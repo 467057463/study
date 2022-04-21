@@ -13,9 +13,6 @@ export default class User {
   }
   // 初始化
   async init(){
-    if(this.state !== 'initing'){
-      return
-    }
     try {
       const contents = await getStorage('user');
       if(contents){
