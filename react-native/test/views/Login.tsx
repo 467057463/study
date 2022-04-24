@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Input, Button, Icon } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,6 +9,9 @@ import { useValidate } from '../hook/useValidate';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export default observer(function Login({navigation}: NativeStackScreenProps<any, 'Login'>) {
+  // hook
+  const toast = useToast();
+  const { user } = useStore();
   const { data, changeData, validate } = useValidate({
     account: [{
       required: true,
@@ -20,13 +22,12 @@ export default observer(function Login({navigation}: NativeStackScreenProps<any,
       message: '请输入密码' 
     }]  
   });
-  const toast = useToast();
-  const { user } = useStore();
 
-  async function submit(){
+  // 登录
+  async function login(){
     try {
       await validate();
-      const res = await user.login(data)
+      const res = await user.login(data)      
     } catch (error: any) {
       // api 返回错误
       if(error.msg){
@@ -40,7 +41,7 @@ export default observer(function Login({navigation}: NativeStackScreenProps<any,
       <Input 
         placeholder='用户名/手机号码/邮箱地址' 
         value={data.account} 
-        onChangeText={(value) => changeData('account', value)}
+        onChangeText={(value) => changeData("account", value)}
         leftIcon={
           <Icon
             name="user"
@@ -67,7 +68,7 @@ export default observer(function Login({navigation}: NativeStackScreenProps<any,
       <View style={styles.buttonContainer}>
         <Button 
           title="登录"
-          onPress={submit}
+          onPress={login}
           loading={user.loading}
         />
 

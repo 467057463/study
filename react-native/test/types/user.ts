@@ -53,3 +53,19 @@ export type LoginRespon = APIRespon<any, Account>
 export type CheckObjectIsExistsRespon = APIRespon<any, {
   isExits: number;
 }>
+
+
+export type VerifyCodeAction = 'forgetpassword' | 'register';
+
+// 请求参数类型 获取验证码
+export type GetVerifyCodeParams = {
+  object: string;
+  action: VerifyCodeAction;
+};
+
+// 请求参数类型 检测验证码
+export type VerifyCodeParams = {
+  object: string;
+  code: string;
+  action: VerifyCodeAction;
+};

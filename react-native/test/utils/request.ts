@@ -21,7 +21,8 @@ function generateHeader(token = '') {
 }
 
 const ucRequest = axios.create({
-  baseURL: 'http://user.erp.idealhere.com/',
+  // baseURL: 'http://user.erp.idealhere.com/',
+  baseURL: 'http://172.168.20.12/',
   timeout: 20000,
   // adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
   //   enabledByDefault: false,

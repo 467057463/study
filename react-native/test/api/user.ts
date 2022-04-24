@@ -1,5 +1,5 @@
 import { ucRequest } from "../utils";
-import type { LoginParams, LoginRespon, CheckObjectIsExistsRespon } from "../types/user";
+import type { LoginParams, LoginRespon, CheckObjectIsExistsRespon, GetVerifyCodeParams, VerifyCodeParams } from "../types/user";
 
 // 检查账号是否存在
 export function checkObjectIsExists(account: string) {
@@ -30,4 +30,14 @@ export async function ucLogin(params: LoginParams) {
   } catch (error) {
     return Promise.reject(error);
   }
+}
+
+// 获取验证码
+export function getVerifyCode(params: GetVerifyCodeParams) {
+  return ucRequest.post('/api/v2/user/getVerifyCode', params);
+}
+
+// 检测验证码
+export function verifyCode(params: VerifyCodeParams) {
+  return ucRequest.post('/api/v2/user/verifyCode', params);
 }

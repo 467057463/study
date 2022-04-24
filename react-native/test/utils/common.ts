@@ -1,3 +1,7 @@
+// 延时
+export const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+  
 // 获取对象类型
 export function getType(obj) {
   return Object.prototype.toString.call(obj).slice(8, -1);
