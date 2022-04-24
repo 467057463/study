@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { textState, charCountState } from '../store'
 
@@ -9,6 +9,10 @@ export default function Home(){
   const onChange = (event) => {
     setText(event.target.value)
   }
+
+  useEffect(() => {
+    console.log('test')
+  })
 
   return(
     <div className='home'>
