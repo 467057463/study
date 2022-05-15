@@ -38,7 +38,13 @@ ul?.addEventListener('keydown', function(e){
 //   leaf?: boolean
 // }
 
-export interface CascaderOption extends Record<string, unknown>
+export interface CascaderOption extends Record<string, unknown> {
+  label?: string
+  value?: string
+  children?: number[]
+  disabled?: boolean
+  leaf?: boolean
+}
 
 const c: CascaderOption = {
   label: 'sss',
