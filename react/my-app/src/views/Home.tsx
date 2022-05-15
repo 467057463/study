@@ -1,26 +1,12 @@
-import React, { useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { textState, charCountState } from '../store'
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../hook/useStore';
 
-export default function Home(){
-  const [text, setText] = useRecoilState(textState);
-  const count = useRecoilValue(charCountState)
-
-  const onChange = (event) => {
-    setText(event.target.value)
-  }
-
-  useEffect(() => {
-    console.log('test')
-  })
-
+export default observer(function Home(){
+  const user = useStore("user");
   return(
-    <div className='home'>
-      <input type="text" value={text} onChange={onChange} />
-      <br />
-      Echo: {text}
-      <br/>
-      length: {count}
+    <div className='home' onClick={()=> user.increase()}>
+      homes{user.count}
     </div>
   )
-}
+})

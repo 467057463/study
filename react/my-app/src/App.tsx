@@ -1,13 +1,12 @@
 import React from 'react';
-import { RecoilRoot, atom } from 'recoil';
 import Home from './views/Home'
-
+import { StoreProvider } from './hook/useStore'
 
 function App() {
   return (
-    <RecoilRoot>
+    <StoreProvider>
       <Home/>
-    </RecoilRoot>
+    </StoreProvider>
   );
 }
 

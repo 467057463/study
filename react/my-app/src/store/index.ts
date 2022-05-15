@@ -1,15 +1,7 @@
-import { RecoilRoot, atom, selector } from 'recoil';
+import User from './User'
 
-export const textState = atom({
-  key: 'textState',
-  default: '',
-})
+ const store = {
+  user: new User()
+}
 
-export const charCountState = selector({
-  key: 'charCountState',
-  get: ({get}) => {
-    const text = get(textState);
-
-    return text.length;
-  }
-})
+export default store
