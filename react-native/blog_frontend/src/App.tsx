@@ -11,7 +11,7 @@ import ForgetPassword from './views/ForgetPassword';
 const Stack = createNativeStackNavigator();
 
 const linking = {
-  prefixes: [''],
+  // prefixes: [''],
   config: {
     screens: {
       Login: 'login',
@@ -19,8 +19,12 @@ const linking = {
       Home: {
         path: 'home',
         screens: {
-          Chat: 'chat',
-          Settings: 'settings'
+          Chat: {
+            path: 'chat',
+          },
+          Settings: {
+            path: 'settings',
+          }
         }
       }
     }
@@ -40,7 +44,8 @@ function App() {
           src: url(${require('react-native-vector-icons/Fonts/FontAwesome.ttf')}) format('truetype');
         }
       `}</style>
-      <NavigationContainer>
+      {/* @ts-ignore */}
+      <NavigationContainer linking={linking}>
         <Stack.Navigator>
           <Stack.Screen
             name="Login"
