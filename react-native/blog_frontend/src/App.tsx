@@ -43,6 +43,10 @@ function App() {
           font-family: 'FontAwesome';
           src: url(${require('react-native-vector-icons/Fonts/FontAwesome.ttf')}) format('truetype');
         }
+        @font-face {
+          font-family: 'AntDesign';
+          src: url(${require('react-native-vector-icons/Fonts/AntDesign.ttf')}) format('truetype');
+        }
       `}</style>
       {/* @ts-ignore */}
       <NavigationContainer linking={linking}>

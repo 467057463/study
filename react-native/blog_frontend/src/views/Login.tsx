@@ -1,64 +1,84 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native-web';
-import {Button} from '@rneui/themed';
-import { Divider } from "@rneui/themed";
-import { Badge, Icon, withBadge  } from "@rneui/themed";
-import { BottomSheet } from "@rneui/themed";
-import { Card } from "@rneui/themed";
-
-const BadgedIcon = withBadge(15)(Icon);
+import React from 'react';
+import {  View, StyleSheet } from 'react-native-web';
+import { Input, Button } from "@rneui/themed";
+import { useForm, Controller } from "react-hook-form";
 
 export default function Login({navigation}){
-  const [isVisible, setIsVisible] = useState(false);
-
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      account: '',
+      password: ''
+    }
+  });
+  
+  const onSubmit = data => console.log(data);
+  const SubmitErrorHandler = error => console.log(error)
   return(
     <View style={styles.view}>
-      <Button 
-        title="聊天" 
-        onPress={() => navigation.navigate('Home', {
-          screen: 'Settings',
-        })
-        }/>
-      {/* @ts-ignore */}
-      <BadgedIcon type="ionicon" name="ios-chatbubbles" />
-      <Text>divider</Text>
-      <Divider color='red' width={2}/>
-      <Button
-        title="忘记密码"
-        onPress={() => navigation.navigate('ForgetPassword')}
-      />
-      <Button
-        title="Open Bottom Sheet"
-        onPress={() => setIsVisible(true)}
-      />
-      {/* @ts-ignore */}
-      <BottomSheet modalProps={{}} isVisible={isVisible} onBackdropPress={() => setIsVisible(false)}>
-        <Text>ABCDEFG</Text>
-      </BottomSheet>
-      {/* @ts-ignore */}
-      <Card>
-        <Card.Title>CARD TITLE</Card.Title>
-        <Card.Divider/>
-        <Card.Image
-          style={styles.image}
-          resizeMode="cover"
-          source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }}
+      <View style={styles.container}>
+        <Controller
+          control={control}
+          rules={{
+            required: {
+              value: true,
+              message: '不能为空'
+            },
+          }}
+          name="account"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input 
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder='用户名/邮箱/手机号'
+              leftIcon={{ type: 'ant-design', name: 'user' }}
+            />
+          )}
         />
-        <Text>Test</Text>
-      </Card>
+        
+        <Controller
+          control={control}
+          rules={{
+           required: true,
+          }}
+          name="password"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input 
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder='密码' 
+              secureTextEntry={true}
+              leftIcon={{ type: 'ant-design', name: 'lock' }}
+            />
+          )}
+        />
+
+        <View style={styles.btnWraper}>
+          <Button
+            onPress={handleSubmit(onSubmit, SubmitErrorHandler)}
+          >登录</Button>
+        </View>
+      </View>
+      <Button 
+        type="clear"
+        onPress={() => navigation.navigate('ForgetPassword')}
+      >忘记密码？</Button>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   view: {
+    paddingTop: 20,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  image: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
+  container: {
+    flex: 1
   },
+  btnWraper: {
+    marginTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+  }
 });
