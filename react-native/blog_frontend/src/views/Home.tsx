@@ -1,25 +1,13 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Chat from './Chat';
-import Settings from './Settings';
+import Technology from './Technology';
+import Life from './Life';
+import User from './User';
 
 const Tab = createBottomTabNavigator();
 
 export default function Home({navigation}) {
-  React.useEffect(() => {
-    console.log(navigation)
-    const unsubscribe = navigation.addListener('tabPress', (e) => {
-      console.log(e)
-      // Prevent default behavior
-      // e.preventDefault();
-  
-      // Do something manually
-      // ...
-    });
-  
-    return unsubscribe;
-  }, [navigation]);
 
   return (
     <Tab.Navigator
@@ -27,9 +15,11 @@ export default function Home({navigation}) {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
 
-          if (route.name === 'Chat') {
+          if (route.name === 'Technology') {
             iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
-          } else if (route.name === 'Settings') {
+          } else if (route.name === 'Life') {
+            iconName = focused ? 'settings' : 'settings-outline';
+          } else if (route.name === 'User') {
             iconName = focused ? 'settings' : 'settings-outline';
           }
 
@@ -39,11 +29,12 @@ export default function Home({navigation}) {
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
       })}>
-      <Tab.Screen name="Chat" component={Chat} options={{title: '聊天'}}/>
+      <Tab.Screen name="Technology" component={Technology} options={{title: '技术'}}/>
+      <Tab.Screen name="Life" component={Life} options={{title: '随笔'}}/>
       <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{title: '设置'}}
+        name="User"
+        component={User}
+        options={{title: '我的'}}
       />
     </Tab.Navigator>
   );

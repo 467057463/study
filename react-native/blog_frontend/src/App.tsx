@@ -19,8 +19,11 @@ const linking = {
       Home: {
         path: 'home',
         screens: {
-          Chat: {
-            path: 'chat',
+          Technology: {
+            path: 'technology',
+          },
+          Life: {
+            path: 'life',
           },
           Settings: {
             path: 'settings',
