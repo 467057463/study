@@ -1,4 +1,3 @@
-"use strict";
 var p = document.getElementById('p1');
 var range1 = document.createRange();
 var range2 = document.createRange();
@@ -23,3 +22,8 @@ inputWrapper?.addEventListener('keydown', function (e) {
 ul?.addEventListener('keydown', function (e) {
     console.log('ul', e.type, e);
 });
+const c = {
+    label: 'sss',
+    name: 'sss'
+};
+export {};
