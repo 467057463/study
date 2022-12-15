@@ -1,21 +1,31 @@
-function debounce(fn, wait){
-  var timer;
-  return function(){
-    var context = this;
-    clearTimeout(timer);
-    timer = setTimeout(function(){
-      fn.apply(context)
-    }, wait)
+function debounce(fn, wait, immediate){
+  let timer;
+  return function(...args){
+    let context = this;
+    clearTimeout(timer)
+    if(immediate){
+      const callNow = !timer;
+      timer = setTimeout(function(){
+        timer = null;
+      }, wait)
+      if(callNow){
+        fn.apply(context, args)
+      }
+    }else{
+      timer = setTimeout(function(){
+        fn.apply(context, args)
+      }, wait)
+    }
   }
 }
 
 var count = 1;
 var container = document.getElementById('container');
 
-function getUserAction(){
-  console.log(this)
+function getUserAction(e){
+  console.log(this, e)
   container.innerHTML = count ++;
 }
 
-container.onmousemove = debounce(getUserAction, 100);
+container.onmousemove = debounce(getUserAction, 100, true);
 // container.onmousemove = getUserAction;

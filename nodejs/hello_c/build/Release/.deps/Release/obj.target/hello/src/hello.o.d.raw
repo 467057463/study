@@ -1,0 +1,9 @@
+Release/obj.target/hello/src/hello.o: ../src/hello.cc \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/node.h \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/v8.h \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/cppgc/common.h \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/v8config.h \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/v8-internal.h \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/v8-version.h \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/v8-platform.h \
+  /Users/maoyouwen/Library/Caches/node-gyp/16.16.0/include/node/node_version.h

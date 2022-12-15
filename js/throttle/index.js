@@ -1,54 +1,30 @@
-// function throttle(fn, wait){
-//   var previous = 0;
-//   return function(){
-//     var now = +new Date();
-//     var context = this;
-//     var args = arguments;
-//     if( now - previous > wait){
-//       fn.apply(context, args)
-//       previous = now;
-//     }
-//   }
-// }
+function throttle(fn, wait, options = {}){
+  let timer;
+  let previous = 0;
 
-// function throttle(fn, wait){
-//   var timer;
-//   return function(){
-//     var context = this;
-//     var args = arguments;
-//     if(!timer){
-//       timer = setTimeout(function(){
-//         fn.apply(context, args)
-//         timer = null;
-//       }, wait)
-//     }
-//   }
-// }
-
-function throttle(fn, wait, leading = true, trailing = true){
-  var timer;
-  var previous = 0;
-  return function(){
-    var context = this;
-    var args = arguments;
-    var now = +new Date();
-    if(!previous && !leading){
+  return function(...args){
+    const context = this;
+    const now = Date.now();
+    if(!previous && options.leading === false){
       previous = now;
     }
-    var remaining = wait - (now - previous);
-    if(remaining <= 0 || remaining > wait){  
+    const remaining = wait - (now - previous);
+    // 大于 wait 执行
+    if(remaining <= 0 || remaining > wait){
       if(timer){
-        clearTimeout(timer)
+        clearTimeout(timer);
         timer = null;
       }
       fn.apply(context, args)
       previous = now;
-    }else if(!timer && trailing){
-      timer = setTimeout(function(){
-        previous = leading ? +new Date() : 0;
-        timer = null;
-        fn.apply(context, args)
-      }, remaining)
+    } else if(!timer){
+      if(options.trailing !== false){
+        previous = options.leading === false ? 0 : Date.now();
+        timer = setTimeout(function(){
+          fn.apply(context, args)
+          timer = null;
+        }, remaining)
+      }
     }
   }
 }
@@ -61,5 +37,8 @@ function getUserAction(){
   container.innerHTML = count ++;
 }
 
-container.onmousemove = throttle(getUserAction, 1000, false);
+container.onmousemove = throttle(getUserAction, 1000, {
+  leading: false,
+  trailing: false
+});
 // container.onmousemove = getUserAction;
