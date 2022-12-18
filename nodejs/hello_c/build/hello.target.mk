@@ -15,6 +15,7 @@ DEFS_Debug := \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DOPENSSL_NO_PINSHARED' \
 	'-DOPENSSL_THREADS' \
+	'-DNAPI_CPP_EXCEPTIONS' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
 	'-D_DEBUG' \
@@ -40,7 +41,6 @@ CFLAGS_CC_Debug := \
 	-std=gnu++14 \
 	-stdlib=libc++ \
 	-fno-rtti \
-	-fno-exceptions \
 	-fno-strict-aliasing
 
 # Flags passed to only ObjC files.
@@ -56,7 +56,8 @@ INCS_Debug := \
 	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/openssl/openssl/include \
 	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/uv/include \
 	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/zlib \
-	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/v8/include
+	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/v8/include \
+	-I/Users/maoyouwen/Work/study/nodejs/hello_c/node_modules/node-addon-api
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=hello' \
@@ -71,6 +72,7 @@ DEFS_Release := \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DOPENSSL_NO_PINSHARED' \
 	'-DOPENSSL_THREADS' \
+	'-DNAPI_CPP_EXCEPTIONS' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
@@ -93,7 +95,6 @@ CFLAGS_CC_Release := \
 	-std=gnu++14 \
 	-stdlib=libc++ \
 	-fno-rtti \
-	-fno-exceptions \
 	-fno-strict-aliasing
 
 # Flags passed to only ObjC files.
@@ -109,13 +110,18 @@ INCS_Release := \
 	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/openssl/openssl/include \
 	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/uv/include \
 	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/zlib \
-	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/v8/include
+	-I/Users/maoyouwen/Library/Caches/node-gyp/16.16.0/deps/v8/include \
+	-I/Users/maoyouwen/Work/study/nodejs/hello_c/node_modules/node-addon-api
 
 OBJS := \
-	$(obj).target/$(TARGET)/src/hello.o
+	$(obj).target/$(TARGET)/src/index.o \
+	$(obj).target/$(TARGET)/src/say.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)
+
+# Make sure our dependencies are built before any of us.
+$(OBJS): | $(builddir)/nothing.a
 
 # CFLAGS et al overrides must be target-local.
 # See "Target-specific Variable Values" in the GNU Make manual.
@@ -170,7 +176,7 @@ $(builddir)/hello.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/hello.node: LIBS := $(LIBS)
 $(builddir)/hello.node: GYP_LIBTOOLFLAGS := $(LIBTOOLFLAGS_$(BUILDTYPE))
 $(builddir)/hello.node: TOOLSET := $(TOOLSET)
-$(builddir)/hello.node: $(OBJS) FORCE_DO_CMD
+$(builddir)/hello.node: $(OBJS) $(builddir)/nothing.a FORCE_DO_CMD
 	$(call do_cmd,solink_module)
 
 all_deps += $(builddir)/hello.node

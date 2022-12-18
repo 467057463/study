@@ -8,5 +8,8 @@
     "dev": "ts-node-dev --project ../tsconfig.json index.ts"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-addon-api": "^5.0.0"
+  }
 }
