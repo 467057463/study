@@ -1,15 +1,12 @@
 #include <iostream>
-#include <cmath>
 
 int main() {
     using namespace std;
 
-    int number;
+    int carrots;
 
-    number = 11122333;
-    cout << "number is " << endl;
-    cout << number;
-    cout << endl;
-
+    cout << "请输入数字";
+    cin >> carrots;
+    cout << "你输入的事" << carrots << endl;
     return 0;
 }

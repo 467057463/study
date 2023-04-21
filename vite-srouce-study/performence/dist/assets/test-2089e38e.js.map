@@ -1,0 +1,1 @@
+{"version":3,"file":"test-2089e38e.js","sources":["../../test.js"],"sourcesContent":["export const a = 'mm';\n\nexport default function(){\n  return a;\n}"],"names":["a","test"],"mappings":"AAAY,MAACA,EAAI,KAEF,SAAAC,GAAU,CACvB,OAAOD,CACT"}
