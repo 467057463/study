@@ -12,6 +12,18 @@ import log from 'electron-log';
 import createProtocol from './electron/createProtocol';
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer';
 
+console.log('===================>', app.requestSingleInstanceLock());
+
+(async function (){
+  console.log(process.execPath)
+  const res = app.setAsDefaultProtocolClient('mmisme')
+  console.log(res)
+})()
+console.log('=================')
+
+if(!app.requestSingleInstanceLock()){
+  app.quit()
+}
 
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }]);
 
@@ -68,12 +80,28 @@ app.on('activate', () => {
 });
 
 app.whenReady().then(async () => {
+  console.log(app.getLocaleCountryCode())
+  console.log(app.getLocale())
+  // console.log(app.getSystemLocal())
+  console.log(app.getAppPath())
+  console.log(app.getPath('home'))
+  console.log(app.getPath('appData'))
+  console.log(app.getPath('userData'))
+  console.log(app.getPath('temp'))
+  console.log(app.getPath('exe'))
+  console.log(app.getPath('recent'))
+  console.log(app.getPath('logs'))
+  console.log(app.getVersion())
+  console.log(app.getName())
+  console.log(app.getLocale())
+  console.log(app.getPath('crashDumps'));
+
   if(import.meta.env.DEV){
     // 加载本地插件
     const ses = session.fromPartition(partition);
     const vueDevToolsPath = path.join(
       os.homedir(),
-      '/AppData/Local/Google/Chrome/User Data/Default/Extensions/ljjemllljcmogpfapbkkighbhhppjdbg/6.0.0.15_0'
+      '/AppData/Local/Google/Chrome/User Data/Default/Extensions/ljjemllljcmogpfapbkkighbhhppjdbg/6.0.0.21_0'
     )
     await ses.loadExtension(vueDevToolsPath);
     

@@ -4,7 +4,7 @@
 
 std::string sayHello(std::string name){
   using namespace std;
-  cout << 'mmisme';
+  cout << 1;
   cout << endl;
-  return "Hello " + name + "!";
+  return "Hello " + name + "!!!!!";
 }
