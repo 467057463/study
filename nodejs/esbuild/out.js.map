@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["utils/utils.ts", "transform/index.ts"],
+  "sourcesContent": ["export const delay = () => Promise.reject('ssss')", "import { delay } from \"../utils/utils\";\n\nlet x: number = 1;\n\nDEBUG && (x = 101);\n\nlet b: string = _path;\n\nlet c: any = _config;\n\ndelay()"],
+  "mappings": "AAAO,IAAMA,EAAQ,IAAM,QAAQ,OAAO,MAAM,ECEhD,IAAIC,EAAY,EAEhB,QAAUA,EAAI,KAEd,IAAIC,EAAY,MAEZC,EAAS,QAEbC,EAAM",
+  "names": ["delay", "x", "b", "c", "delay"]
+}

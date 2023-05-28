@@ -1,56 +1,48 @@
-import { build } from 'esbuild';
-import { accessSync, appendFileSync, constants, copyFileSync, cpSync, existsSync, linkSync, readFileSync, readdirSync, statSync, unlinkSync } from 'fs';
-import { spawnSync } from 'child_process';
-import { join } from 'path';
+import { access, appendFile, chmod, constants, copyFile, cp, createReadStream, fstat } from "fs";
 
-const test = readFileSync('./package.json');
-console.log(test);
-// copyFileSync('./dist/app.js', 'app.copy.js')
-// appendFileSync('./dist/app.js', 'test')
-// cpSync('react', 'react-copy', { 
-//   recursive: true,
-//   filter(item, n){
-//     console.log(item, n)
-//     return true
-//   }
+// access('./test.txt', constants.X_OK | constants.R_OK | constants.W_OK, function(err){
+//   console.log(err)
+//   console.log(`${err ? '不存在' : '存在'}`)
 // })
 
-// linkSync('index.ts', 'index-line.ts')
-unlinkSync('index-line.ts')
-// function getDIr(path: string){  
-//   if(!existsSync(path)){
-//     return
-//   }
-//   // console.log('path', path)
-//   return readdirSync(path).reduce((prev: any, item) => {
-//     const np = join(path, item)
-//     if(statSync(np).isDirectory()){
-//       prev[item] = getDIr(np)
-//     } else {
-//       prev[item] = item;
-//     }
-//     console.log('prev', np, prev)
-//     return prev;
-//   }, {})
-// }
+// appendFile('./testa.txt', '1234567890', function(err){
+//   console.log(err)
+// })
 
-// const res = getDIr('./node_modules');
-// console.log(res);
+// chmod('./test.txt', 0o777, function(err) {
+//   console.log(err)
+// })
 
+// copyFile('./test.txt', './testa.txt', constants.COPYFILE_FICLONE_FORCE, function(err){
+//   console.log(err)
+// })
 
-spawnSync("npm help", {
-  shell: true,
-  stdio: "inherit"
+// cp('./utils', './utils-bak', {recursive: true}, function(err){
+//   console.log(err)
+// })
+
+const rs = createReadStream('./test.txt').pipe(process.stdout)
+// console.log(rs)
+
+rs.on('data', (data) => {
+  console.log(data)
 })
-process.exit
 
-// build({
-//   entryPoints: ['react/app.jsx'],
-//   bundle: true,
-//   loader: {
-//     '.png': 'dataurl'
-//   },
-//   outdir: 'dist',
-//   // outfile: 'index.js',
-//   // external: ['./react/utils/index.ts']
-// })
+// import { build } from 'esbuild';
+
+// (async function(){
+//   const res = await build({
+//     entryPoints: ['react/app.jsx'],
+//     bundle: true,
+//     loader: {
+//       '.png': 'dataurl'
+//     },
+//     outdir: 'dist',
+//     metafile: true,
+//     write: false
+//     // outfile: 'index.js',
+//     // external: ['./react/utils/index.ts']
+//   })
+//   console.log(res)
+// })()
+
