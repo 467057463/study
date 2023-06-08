@@ -1,49 +1,19 @@
+import { spawn } from 'child_process';
 import { build } from 'esbuild';
-import { accessSync, appendFileSync, constants, copyFileSync, cpSync, existsSync, linkSync, readFileSync, readdirSync, statSync, unlinkSync } from 'fs';
-import { spawnSync } from 'child_process';
-import { join } from 'path';
+import { createReadStream, createWriteStream } from 'fs';
+import { stdout } from 'process';
 
-const test = readFileSync('./package.json');
-console.log(test);
-// copyFileSync('./dist/app.js', 'app.copy.js')
-// appendFileSync('./dist/app.js', 'test')
-// cpSync('react', 'react-copy', { 
-//   recursive: true,
-//   filter(item, n){
-//     console.log(item, n)
-//     return true
-//   }
-// })
+const rs = createReadStream('./package-lock.json', {
+  start: 0,
+  end: 1000,
+  highWaterMark: 1 * 1024,
+  emitClose: false,
+  encoding: 'utf-8'
+});
 
-// linkSync('index.ts', 'index-line.ts')
-unlinkSync('index-line.ts')
-// function getDIr(path: string){  
-//   if(!existsSync(path)){
-//     return
-//   }
-//   // console.log('path', path)
-//   return readdirSync(path).reduce((prev: any, item) => {
-//     const np = join(path, item)
-//     if(statSync(np).isDirectory()){
-//       prev[item] = getDIr(np)
-//     } else {
-//       prev[item] = item;
-//     }
-//     console.log('prev', np, prev)
-//     return prev;
-//   }, {})
-// }
+const ls = spawn('ls', ['-ls', './'])
 
-// const res = getDIr('./node_modules');
-// console.log(res);
-
-
-spawnSync("npm help", {
-  shell: true,
-  stdio: "inherit"
-})
-process.exit
-
+ls.stdout.pipe(stdout)
 // build({
 //   entryPoints: ['react/app.jsx'],
 //   bundle: true,
