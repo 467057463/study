@@ -11,14 +11,36 @@ import { createServer } from "http";
 //   res.end("<b>OKJB</b>");
 // });
 
-const server = createServer();
 
-server.on('request', function(req, res){
-  console.log(res)
-  res.setHeader("Content-type", 'application/json')
-  res.end(JSON.stringify({
-    data: 'hello world!'
-  }))
+
+const server = createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('okay');
+});
+server.on('upgrade', (req, socket, head) => {
+  console.log('test.....')
+  socket.write('HTTP/1.1 101 Web Socket Protocol Handshake\r\n' +
+               'Upgrade: WebSocket\r\n' +
+               'Connection: Upgrade\r\n' +
+               '\r\n');
+
+  socket.pipe(socket); // echo back
+});
+
+// server.on('request', function(req, res){
+//   console.log(res)
+//   res.setHeader("Content-type", 'application/json')
+//   res.end(JSON.stringify({
+//     data: 'hello world!'
+//   }))
+// })
+
+// server.on('connect', (req, clientSocket, head) => {
+//   console.log('ssss')
+// })
+
+server.on('upgrade', (req, socket, head) => {
+  console.log(req, socket, head)
 })
 
 server.listen(3001);
