@@ -1,26 +1,23 @@
-import { createServer } from "http";
+import { createServer } from 'net';
 
-// const server = createServer(function (req, res) {
-//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-//   res.setHeader("Access-Controll-Allow-Methods", "*");
-//   res.setHeader("Allow", "GET");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-type");
-//   res.setHeader("Access-Control-Max-Age", 20);
-//   res.setHeader("Set-Cookie", "sid=123344; path=/;");
-//   res.setHeader("Access-Control-Allow-Credentials", "true");
-//   res.end("<b>OKJB</b>");
-// });
+var PIPE_NAME = "study_pipe";
+var PIPE_PATH = "\\\\.\\pipe\\" + PIPE_NAME;
 
-const server = createServer();
+const server = createServer()
 
-server.on('request', function(req, res){
-  console.log(res)
-  res.setHeader("Content-type", 'application/json')
-  res.end(JSON.stringify({
-    data: 'hello world!'
-  }))
+server.on('connection', (socket) => {
+  socket.on('data', (c)=> {
+    console.log('data', c.toString())
+    socket.write('test abcdefg')
+  })
+
 })
 
-server.listen(3001);
+server.listen(PIPE_PATH, () => {
+  console.log('server 监听成功', PIPE_PATH)
+})
 
-// console.log(exports);
+
+import { Buffer } from 'buffer';
+
+console.log(Buffer)

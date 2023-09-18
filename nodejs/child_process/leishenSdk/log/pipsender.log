@@ -1,0 +1,13 @@
+[08-24 16:33:31.831] [16652:10432 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_16652
+[08-24 16:34:23.978] [17012:5596  ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_17012
+[08-24 16:39:21.246] [16800:15924 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_16800
+[08-24 16:39:43.683] [16772:13484 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_16772
+[08-24 16:39:59.652] [4520:14664 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_4520
+[08-24 16:40:32.178] [11028:17700 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_11028
+[08-24 16:42:05.069] [15744:5984  ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_15744
+[08-24 16:54:29.635] [4112:12380 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_4112
+[08-24 16:56:12.819] [4008:5660  ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_4008
+[08-24 17:00:39.690] [5356:17260 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_5356
+[08-25 13:58:34.339] [21360:19828 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_21360
+[08-25 13:58:41.407] [19668:4180  ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_19668
+[08-25 15:28:04.511] [20316:13380 ] [info ] [ipcsender.cpp:40] CreateNamedPipe ok \\.\Pipe\sdk_Sender_20316

@@ -1,0 +1,54 @@
+[08-24 16:33:32.233] [16652:3956  ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:33:32.234] [16652:3956  ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:33:32.234] [16652:3956  ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:34:04.737] [10992:15908 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:34:24.197] [17012:12612 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:34:24.197] [17012:12612 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:34:24.197] [17012:12612 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:39:21.465] [16800:12536 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:39:21.466] [16800:12536 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:39:21.466] [16800:12536 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:39:43.898] [16772:14708 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:39:43.898] [16772:14708 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:39:43.898] [16772:14708 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:39:59.877] [4520:2460  ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:39:59.877] [4520:2460  ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:39:59.877] [4520:2460  ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:40:32.417] [11028:14532 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:40:32.418] [11028:14532 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:40:32.418] [11028:14532 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:41:32.236] [11028:17700 ] [info ] [websockserver.cpp:317] WsServer stop Listen, will stop.16824544
+[08-24 16:41:32.236] [11028:17700 ] [info ] [websockserver.cpp:301] WsServer stoped.16824544
+[08-24 16:42:05.289] [15744:17176 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:42:05.290] [15744:17176 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:42:05.290] [15744:17176 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:43:05.124] [15744:5984  ] [info ] [websockserver.cpp:317] WsServer stop Listen, will stop.16824544
+[08-24 16:43:05.124] [15744:5984  ] [info ] [websockserver.cpp:301] WsServer stoped.16824544
+[08-24 16:54:30.033] [4112:6756  ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:54:30.033] [4112:6756  ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:54:30.033] [4112:6756  ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 16:56:13.032] [4008:18276 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 16:56:13.032] [4008:18276 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 16:56:13.032] [4008:18276 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 17:00:39.885] [5356:17524 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-24 17:00:39.885] [5356:17524 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-24 17:00:39.885] [5356:17524 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-24 17:01:39.746] [5356:17260 ] [info ] [websockserver.cpp:317] WsServer stop Listen, will stop.16824544
+[08-24 17:01:39.746] [5356:17260 ] [info ] [websockserver.cpp:301] WsServer stoped.16824544
+[08-25 13:58:34.714] [21360:11700 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-25 13:58:34.715] [21360:11700 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-25 13:58:34.715] [21360:11700 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-25 13:58:41.613] [19668:12696 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-25 13:58:41.613] [19668:12696 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-25 13:58:41.613] [19668:12696 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544
+[08-25 13:58:42.327] [19668:12696 ] [info ] [websockserver.cpp:48] new client is connected, on_open:68403472,16824544
+[08-25 13:58:42.327] [19668:12696 ] [info ] [main.cpp:64] client on_open. 68403472
+[08-25 13:58:45.331] [19668:12696 ] [info ] [websockserver.cpp:28] client on_message:68403472
+[08-25 13:58:45.331] [19668:12696 ] [info ] [main.cpp:57] client on_message. 68403472
+[08-25 13:58:45.331] [19668:12696 ] [debug] [websockserver.cpp:131] msg send: {"code":200,"data":null,"id":1,"method":100000,"msg":"成功","notify":0}
+[08-25 13:58:48.334] [19668:12696 ] [info ] [websockserver.cpp:28] client on_message:68403472
+[08-25 13:58:48.334] [19668:12696 ] [info ] [main.cpp:57] client on_message. 68403472
+[08-25 13:58:48.334] [19668:12696 ] [debug] [websockserver.cpp:131] msg send: {"code":200,"data":null,"id":1,"method":100000,"msg":"成功","notify":0}
+[08-25 15:28:04.841] [20316:19976 ] [error] [websockserver.cpp:239] websocket server init ok. port=10908
+[08-25 15:28:04.841] [20316:19976 ] [info ] [main.cpp:457] websocket server start now! port=10908
+[08-25 15:28:04.841] [20316:19976 ] [info ] [websockserver.cpp:287] WsServer started, start Listening...16824544

@@ -1,31 +1,46 @@
-// const net = require('net');
-// const PORT = 3000;
-// const HOST = '127.0.0.1';
+// import { request } from "http";
 
-
-
-// // new net.Socket() 返回的是一个双工流
-// let client = new net.Socket()
-
-// client.connect(PORT, HOST, () => {
-//   console.log('connected server')
-//   client.write('client: hello server');
+// const req = request('http://localhost:3001', {
+//   method: 'get',
+// }, function(res) {
+//   res.on('data', (chunk) => {
+//     console.log(chunk.toString())
+//   })
 // })
-// client.on('data', function (data) {
-//   console.log(data.toString())
-// });
-// setTimeout(()=>{
-//   client.end()
-// },5000)
 
-import { request } from "http";
+// req.end();
 
-const req = request('http://localhost:3001', {
-  method: 'get',
-}, function(res) {
-  res.on('data', (chunk) => {
-    console.log(chunk.toString())
-  })
+import { createConnection } from "net";
+
+const client = createConnection(3001);
+
+client.on('connect', () => {
+  console.log('connecting...')
+  console.log(client.localAddress)
+  console.log(client.localPort)
+  console.log(client.localFamily)
+
+  console.log(client.remoteAddress)
+  console.log(client.remotePort)
+  console.log(client.remoteFamily)
 })
 
-req.end();
+client.on('data', (data) => {
+  console.log(data)
+})
+
+client.on('close', (error)=>{
+  console.log('error', error)
+  console.log('closed')
+})
+
+client.on('end', () => {
+  console.log('on end')
+})
+
+client.on('lookup', function(){
+  console.log('on lookup', arguments)
+})
+
+client.end('hello server');
+

@@ -1,0 +1,1 @@
+{"area_id":0,"game_id":0,"token":"","xiaobei_slient_install":1}

@@ -1,0 +1,82 @@
+;
+; nfwfp.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class = NetService
+ClassGUID = {4D36E974-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=nfwfp.cat
+DriverVer = 03/08/2023,10.46.0.39
+PnpLockDown=1
+
+
+;--------- SourceDiskNames and SourceDiskFiles Section -----------------------
+[SourceDisksNames]
+1 = %DiskName%,,
+
+[SourceDisksFiles]
+nfwfp.sys  = 1
+;nfwfp32.sys  = 1
+
+
+;--------- DestinationDirs Section -------------------------------------------
+[DestinationDirs]
+;DefaultDestDir = 12
+Drivers_Files_x64 = 13
+;Drivers_Files_x86 = 12
+
+;--------- Sys File ----------------------------------------------------------
+[Drivers_Files_x64]
+nfwfp.sys
+
+;[Drivers_Files_x86]
+;nfwfp32.sys
+
+
+;--------- x86 DefaultInstall ------------------------------------------------
+;[DefaultInstall.NTX86]
+;CopyFiles = Drivers_Files_x86
+
+;[DefaultInstall.NTX86.Services]
+;AddService   = %ServiceName_x86%,,Service_Inst_x86
+
+;[DefaultUninstall.NTX86.Services]
+;DelService = %ServiceName_x86%,0x200
+
+;[Service_Inst_x86]
+;DisplayName    = %ServiceName_x86%
+;Description    = %ServiceDec%  
+;ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+;StartType      = 3               ; SERVICE_DEMAND_START
+;ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+;ServiceBinary  = %12%\%ServiceName_x86%.sys
+
+
+;--------- x64 DefaultInstall ------------------------------------------------
+[DefaultInstall.NTAMD64]
+CopyFiles = Drivers_Files_x64
+
+[DefaultInstall.NTAMD64.Services]
+AddService   = %ServiceName_x64%,,Service_Inst_x64
+
+[DefaultUninstall.NTAMD64.Services]
+DelService = %ServiceName_x64%,0x200
+
+[Service_Inst_x64]
+DisplayName    = %ServiceName_x64%
+Description    = %ServiceDec%  
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\%ServiceName_x64%.sys
+
+
+;--------- Strings Section ---------------------------------------------------
+[Strings]
+ManufacturerName = "leigod"
+ServiceName_x64 = "nfwfp"
+;ServiceName_x86 = "nfwfp32"
+DiskName="leigod Device Source Disk"
+ServiceDec ="leigod network acceleration service"
