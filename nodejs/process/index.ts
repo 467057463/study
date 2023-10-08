@@ -1,1 +1,2 @@
-console.log(process)
+console.log('test')
+process.exit(1)
