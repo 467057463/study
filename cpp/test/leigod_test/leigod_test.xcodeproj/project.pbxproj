@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		58304FB62AD3A9060034DC6F /* leigod_testApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58304FB52AD3A9060034DC6F /* leigod_testApp.swift */; };
+		58304FB82AD3A9060034DC6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58304FB72AD3A9060034DC6F /* ContentView.swift */; };
+		58304FBA2AD3A9080034DC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58304FB92AD3A9080034DC6F /* Assets.xcassets */; };
+		58304FBD2AD3A9080034DC6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58304FBC2AD3A9080034DC6F /* Preview Assets.xcassets */; };
+		58304FC82AD3A9080034DC6F /* leigod_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58304FC72AD3A9080034DC6F /* leigod_testTests.swift */; };
+		58304FD22AD3A9080034DC6F /* leigod_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58304FD12AD3A9080034DC6F /* leigod_testUITests.swift */; };
+		58304FD42AD3A9080034DC6F /* leigod_testUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58304FD32AD3A9080034DC6F /* leigod_testUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		58304FC42AD3A9080034DC6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58304FAA2AD3A9060034DC6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58304FB12AD3A9060034DC6F;
+			remoteInfo = leigod_test;
+		};
+		58304FCE2AD3A9080034DC6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58304FAA2AD3A9060034DC6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58304FB12AD3A9060034DC6F;
+			remoteInfo = leigod_test;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		58304FB22AD3A9060034DC6F /* leigod_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leigod_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58304FB52AD3A9060034DC6F /* leigod_testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leigod_testApp.swift; sourceTree = "<group>"; };
+		58304FB72AD3A9060034DC6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		58304FB92AD3A9080034DC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58304FBC2AD3A9080034DC6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		58304FBE2AD3A9080034DC6F /* leigod_test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = leigod_test.entitlements; sourceTree = "<group>"; };
+		58304FC32AD3A9080034DC6F /* leigod_testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = leigod_testTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58304FC72AD3A9080034DC6F /* leigod_testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leigod_testTests.swift; sourceTree = "<group>"; };
+		58304FCD2AD3A9080034DC6F /* leigod_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = leigod_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58304FD12AD3A9080034DC6F /* leigod_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leigod_testUITests.swift; sourceTree = "<group>"; };
+		58304FD32AD3A9080034DC6F /* leigod_testUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leigod_testUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58304FAF2AD3A9060034DC6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58304FC02AD3A9080034DC6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58304FCA2AD3A9080034DC6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		58304FA92AD3A9060034DC6F = {
+			isa = PBXGroup;
+			children = (
+				58304FB42AD3A9060034DC6F /* leigod_test */,
+				58304FC62AD3A9080034DC6F /* leigod_testTests */,
+				58304FD02AD3A9080034DC6F /* leigod_testUITests */,
+				58304FB32AD3A9060034DC6F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		58304FB32AD3A9060034DC6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58304FB22AD3A9060034DC6F /* leigod_test.app */,
+				58304FC32AD3A9080034DC6F /* leigod_testTests.xctest */,
+				58304FCD2AD3A9080034DC6F /* leigod_testUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58304FB42AD3A9060034DC6F /* leigod_test */ = {
+			isa = PBXGroup;
+			children = (
+				58304FB52AD3A9060034DC6F /* leigod_testApp.swift */,
+				58304FB72AD3A9060034DC6F /* ContentView.swift */,
+				58304FB92AD3A9080034DC6F /* Assets.xcassets */,
+				58304FBE2AD3A9080034DC6F /* leigod_test.entitlements */,
+				58304FBB2AD3A9080034DC6F /* Preview Content */,
+			);
+			path = leigod_test;
+			sourceTree = "<group>";
+		};
+		58304FBB2AD3A9080034DC6F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				58304FBC2AD3A9080034DC6F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		58304FC62AD3A9080034DC6F /* leigod_testTests */ = {
+			isa = PBXGroup;
+			children = (
+				58304FC72AD3A9080034DC6F /* leigod_testTests.swift */,
+			);
+			path = leigod_testTests;
+			sourceTree = "<group>";
+		};
+		58304FD02AD3A9080034DC6F /* leigod_testUITests */ = {
+			isa = PBXGroup;
+			children = (
+				58304FD12AD3A9080034DC6F /* leigod_testUITests.swift */,
+				58304FD32AD3A9080034DC6F /* leigod_testUITestsLaunchTests.swift */,
+			);
+			path = leigod_testUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58304FB12AD3A9060034DC6F /* leigod_test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58304FD72AD3A9080034DC6F /* Build configuration list for PBXNativeTarget "leigod_test" */;
+			buildPhases = (
+				58304FAE2AD3A9060034DC6F /* Sources */,
+				58304FAF2AD3A9060034DC6F /* Frameworks */,
+				58304FB02AD3A9060034DC6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = leigod_test;
+			productName = leigod_test;
+			productReference = 58304FB22AD3A9060034DC6F /* leigod_test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58304FC22AD3A9080034DC6F /* leigod_testTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58304FDA2AD3A9080034DC6F /* Build configuration list for PBXNativeTarget "leigod_testTests" */;
+			buildPhases = (
+				58304FBF2AD3A9080034DC6F /* Sources */,
+				58304FC02AD3A9080034DC6F /* Frameworks */,
+				58304FC12AD3A9080034DC6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58304FC52AD3A9080034DC6F /* PBXTargetDependency */,
+			);
+			name = leigod_testTests;
+			productName = leigod_testTests;
+			productReference = 58304FC32AD3A9080034DC6F /* leigod_testTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		58304FCC2AD3A9080034DC6F /* leigod_testUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58304FDD2AD3A9080034DC6F /* Build configuration list for PBXNativeTarget "leigod_testUITests" */;
+			buildPhases = (
+				58304FC92AD3A9080034DC6F /* Sources */,
+				58304FCA2AD3A9080034DC6F /* Frameworks */,
+				58304FCB2AD3A9080034DC6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58304FCF2AD3A9080034DC6F /* PBXTargetDependency */,
+			);
+			name = leigod_testUITests;
+			productName = leigod_testUITests;
+			productReference = 58304FCD2AD3A9080034DC6F /* leigod_testUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58304FAA2AD3A9060034DC6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					58304FB12AD3A9060034DC6F = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					58304FC22AD3A9080034DC6F = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 58304FB12AD3A9060034DC6F;
+					};
+					58304FCC2AD3A9080034DC6F = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 58304FB12AD3A9060034DC6F;
+					};
+				};
+			};
+			buildConfigurationList = 58304FAD2AD3A9060034DC6F /* Build configuration list for PBXProject "leigod_test" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 58304FA92AD3A9060034DC6F;
+			productRefGroup = 58304FB32AD3A9060034DC6F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58304FB12AD3A9060034DC6F /* leigod_test */,
+				58304FC22AD3A9080034DC6F /* leigod_testTests */,
+				58304FCC2AD3A9080034DC6F /* leigod_testUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58304FB02AD3A9060034DC6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58304FBD2AD3A9080034DC6F /* Preview Assets.xcassets in Resources */,
+				58304FBA2AD3A9080034DC6F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58304FC12AD3A9080034DC6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58304FCB2AD3A9080034DC6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58304FAE2AD3A9060034DC6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58304FB82AD3A9060034DC6F /* ContentView.swift in Sources */,
+				58304FB62AD3A9060034DC6F /* leigod_testApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58304FBF2AD3A9080034DC6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58304FC82AD3A9080034DC6F /* leigod_testTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58304FC92AD3A9080034DC6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58304FD42AD3A9080034DC6F /* leigod_testUITestsLaunchTests.swift in Sources */,
+				58304FD22AD3A9080034DC6F /* leigod_testUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58304FC52AD3A9080034DC6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58304FB12AD3A9060034DC6F /* leigod_test */;
+			targetProxy = 58304FC42AD3A9080034DC6F /* PBXContainerItemProxy */;
+		};
+		58304FCF2AD3A9080034DC6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58304FB12AD3A9060034DC6F /* leigod_test */;
+			targetProxy = 58304FCE2AD3A9080034DC6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		58304FD52AD3A9080034DC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		58304FD62AD3A9080034DC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		58304FD82AD3A9080034DC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = leigod_test/leigod_test.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"leigod_test/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cpp.leigod-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		58304FD92AD3A9080034DC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = leigod_test/leigod_test.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"leigod_test/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cpp.leigod-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		58304FDB2AD3A9080034DC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cpp.leigod-testTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/leigod_test.app/Contents/MacOS/leigod_test";
+			};
+			name = Debug;
+		};
+		58304FDC2AD3A9080034DC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cpp.leigod-testTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/leigod_test.app/Contents/MacOS/leigod_test";
+			};
+			name = Release;
+		};
+		58304FDE2AD3A9080034DC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cpp.leigod-testUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = leigod_test;
+			};
+			name = Debug;
+		};
+		58304FDF2AD3A9080034DC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cpp.leigod-testUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = leigod_test;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58304FAD2AD3A9060034DC6F /* Build configuration list for PBXProject "leigod_test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58304FD52AD3A9080034DC6F /* Debug */,
+				58304FD62AD3A9080034DC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58304FD72AD3A9080034DC6F /* Build configuration list for PBXNativeTarget "leigod_test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58304FD82AD3A9080034DC6F /* Debug */,
+				58304FD92AD3A9080034DC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58304FDA2AD3A9080034DC6F /* Build configuration list for PBXNativeTarget "leigod_testTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58304FDB2AD3A9080034DC6F /* Debug */,
+				58304FDC2AD3A9080034DC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58304FDD2AD3A9080034DC6F /* Build configuration list for PBXNativeTarget "leigod_testUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58304FDE2AD3A9080034DC6F /* Debug */,
+				58304FDF2AD3A9080034DC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58304FAA2AD3A9060034DC6F /* Project object */;
+}
