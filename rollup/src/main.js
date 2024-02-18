@@ -1,7 +1,8 @@
-import * as utils from "./utils/index.js";
+import { version } from "./utils/index";
+import "./assets/index.css"
 
 // (async function(){
 //   await delay()
 //   console.log('after delay')
 // })()
-console.log('hello rollup', utils.version)
+console.log('hello rollup', version)

@@ -1,6 +1,16 @@
 {
+  "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "bundle": "rollup -c --configDebug"
+  },
   "devDependencies": {
-    "rollup": "^3.29.4"
+    "@rollup/plugin-typescript": "^11.1.6",
+    "glob": "^10.3.10",
+    "rollup": "^3.29.4",
+    "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-image-assets": "^1.0.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   }
 }

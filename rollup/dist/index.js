@@ -1,9 +1,10 @@
+// sss
 'use strict';
 
-const version = '1.0.0';
+var index = require('./utils/index');
 
 // (async function(){
 //   await delay()
 //   console.log('after delay')
 // })()
-console.log('hello rollup', version);
+console.log('hello rollup', index.version);

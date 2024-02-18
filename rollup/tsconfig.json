@@ -1,0 +1,6 @@
+{
+  "include": [
+    "src/**/*",
+    "rollup.config.js"
+  ]
+}

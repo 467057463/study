@@ -1,0 +1,43 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.box{
+  width: 50%;
+  height: 500px;
+  background: red;
+  margin-left: 10%;
+  cursor:copy;
+  pointer-events: none;
+}
+.box:hover{
+  background: yellow;
+}
+
+/* padding 撑开 */
+/* .item{
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  background: yellow;
+  overflow: hidden;
+} */
+
+.item{
+  width: 5vw;
+  height: 3.5vw;
+  background: blue;
+  cursor: pointer;
+}
+.item:hover{
+  background: cyan;
+}
+
+a{
+  pointer-events: none;
+}
+
+input{
+  pointer-events: none;
+}
