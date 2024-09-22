@@ -1,8 +1,6 @@
 import { version } from "./utils/index";
-import "./assets/index.css"
+import { repeat } from "lodash";
 
-// (async function(){
-//   await delay()
-//   console.log('after delay')
-// })()
-console.log('hello rollup', version)
+console.log('hello rollup', repeat(version, 10))
+
+export const hello = 'hello';
