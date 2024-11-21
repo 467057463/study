@@ -1,15 +1,15 @@
 System.register(['lodash'], (function (exports) {
   'use strict';
-  var repeat;
+  var _;
   return {
     setters: [function (module) {
-      repeat = module.repeat;
+      _ = module.default;
     }],
     execute: (function () {
 
       const version = '1.0.0';
 
-      console.log('hello rollup', repeat(version, 10));
+      console.log('hello rollup', _.repeat(version, 10));
 
       const hello = exports('hello', 'hello');
 

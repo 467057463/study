@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "bundle": "rollup -c --configDebug"
+    "build": "rollup -c --configDebug"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
@@ -14,6 +14,8 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.4",
     "lodash": "^4.17.21"
   }
 }

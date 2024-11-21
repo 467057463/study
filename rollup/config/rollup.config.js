@@ -4,6 +4,8 @@ import path, { extname } from 'node:path'
 import * as glob from 'glob';
 import pgk from './package.json' assert { type: 'json' }
 import css from 'rollup-plugin-css-only'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 
 console.log(fileURLToPath(new URL('src/util.js', import.meta.url)))
 
@@ -19,7 +21,7 @@ export default defineConfig((comanndLineArgs) => {
         name: 'elecxt',
         entryFileNames: '[name].[format].js',
         globals:{
-          lodash: "lodash"
+          lodash: "_"
         }
       },
       {
@@ -41,7 +43,7 @@ export default defineConfig((comanndLineArgs) => {
         entryFileNames: '[name].[format].js',
         name: 'elecxt',
         globals:{
-          lodash: "lodash"
+          lodash: "_"
         },
         amd: {
           id: "elecxt"
@@ -50,7 +52,12 @@ export default defineConfig((comanndLineArgs) => {
       {
         format: 'es',
         dir: 'dist',
-        entryFileNames: '[name].[format].js'
+        entryFileNames: '[name].[format].js',
+        // assetFileNames: '[name][hash:10][extname].[ext]',
+        banner: (chunk) => {
+          console.log(chunk)
+          return '// test '
+        }
       },
       {
         format: 'system',
@@ -58,6 +65,22 @@ export default defineConfig((comanndLineArgs) => {
         entryFileNames: '[name].[format].js'
       }
     ],
-    external: ['lodash']
+    plugins: [
+      resolve(),
+      commonjs(),
+      css()
+    ],
+    // 数组
+    // external: ['lodash']
+    // 函数
+    external(id, parentId, isResolved){
+      console.log({id, parentId, isResolved})
+      return false;
+    },
+    external: [
+      'lodash',
+      // fileURLToPath(new URL('src/utils/index.js', import.meta.url)),
+      // /node_modules/
+    ]
   }
 })
