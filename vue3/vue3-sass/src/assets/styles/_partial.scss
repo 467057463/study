@@ -1,0 +1,22 @@
+$color: red;
+div{
+  font-size: 15px;
+}
+
+@mixin border($dir, $color){
+  border-#{$dir}: test-#{$color};
+
+  background: {
+    size: 100;
+    color: red;
+  };
+
+  font: {
+    size: 100px;
+    family: test;
+  }
+
+  padding: 10px {
+    top: 5px;
+  }
+}
