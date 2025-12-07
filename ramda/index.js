@@ -1,40 +1,18 @@
-const curry = R.curry;
+const { curry, compose, map, join, split } = R;
 
-const match = curry((wath, str) => str.match(wath));
+const name = ['john-reese', 'harold-finch', 'sameen-shaw'] 
 
-const replace = curry((waht, replacement, str) => str.replace(waht, replacement));
+const capitalize = x => x[0].toUpperCase() + x.slice(1).toLowerCase();
 
-const filter = curry((f, ary) => ary.filter(f));
+const genObj = curry((key, x) => {
+  let obj = {};
+  obj[key] = x;
+  return obj;
+}) 
 
-// const map = curry((f, ary) => ary.map(f));
-const map = curry((f, any_functor_at_all) => any_functor_at_all.map(f))
+const capitalizeName = compose(join(' '), map(capitalize), split('-'));
+const convert2Obj = compose(genObj('name'), capitalizeName)
+const convertName = map(convert2Obj);
 
-const concat = curry((val, str) => str.concat(val))
+var result = convertName(['john-reese', 'harold-finch', 'sameen-shaw']);
 
-function Container (x){
-  this.__value = x;
-}
-
-Container.of = function(x){
-  return new Container(x)
-}
-
-Container.prototype.map = function (f){
-  return Container.of(f(this.__value))
-}
-
-function Maybe (x){
-  this.__value = x;
-}
-
-Maybe.of = function(x){
-  return new Maybe(x)
-}
-
-Maybe.prototype.isNothing = function (){
-  return this.__value === null || this.__value === undefined;
-}
-
-Maybe.prototype.map = function (f){
-  return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.__value));
-}
